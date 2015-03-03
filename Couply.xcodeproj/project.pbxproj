@@ -30,7 +30,7 @@
 		1F0B1DFB1AA39AE400AC5E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F0B1DFC1AA39AE400AC5E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F0B1DFE1AA39AE400AC5E83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1F0B1E011AA39AE400AC5E83 /* Base */ = {isa = PBXFileReference; explicitFileType = text.script.python; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1F0B1E011AA39AE400AC5E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F0B1E031AA39AE400AC5E83 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F0B1E061AA39AE400AC5E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1F0B1E0C1AA39AE400AC5E83 /* CouplyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CouplyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
