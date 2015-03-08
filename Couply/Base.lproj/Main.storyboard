@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Record-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Couply" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,27 +18,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QnQ-48-qti" userLabel="Recording Container">
-                                <rect key="frame" x="192" y="224" width="216" height="224"/>
+                                <rect key="frame" x="192" y="227" width="216" height="224"/>
                                 <subviews>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ8-D1-8fd">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ8-D1-8fd">
                                         <rect key="frame" x="76" y="79" width="79" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH9-Lf-dlw">
-                                        <rect key="frame" x="83" y="158" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH9-Lf-dlw">
+                                        <rect key="frame" x="83" y="143" width="50" height="50"/>
                                         <state key="normal" image="Stop button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zD7-Ux-1IL"/>
+                                            <segue destination="yTm-an-VJl" kind="show" id="J6A-HQ-u8J"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rId-dU-ig8">
-                                        <rect key="frame" x="26" y="-18" width="165" height="100"/>
+                                        <rect key="frame" x="26" y="-17" width="165" height="100"/>
                                         <state key="normal" image="Mic">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -46,28 +47,60 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="hH9-Lf-dlw" secondAttribute="centerY" constant="-46" id="7dA-Wh-RuB"/>
-                                    <constraint firstAttribute="centerX" secondItem="hH9-Lf-dlw" secondAttribute="centerX" id="EKQ-I9-d7W"/>
-                                    <constraint firstAttribute="centerX" secondItem="JJ8-D1-8fd" secondAttribute="centerX" constant="-7.5" id="O2G-dB-oH0"/>
-                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="QnQ-48-qti" secondAttribute="centerY" id="FQY-cU-vvv"/>
-                            <constraint firstAttribute="centerY" secondItem="QnQ-48-qti" secondAttribute="centerY" id="Pst-Nb-Q1w"/>
-                            <constraint firstAttribute="centerX" secondItem="QnQ-48-qti" secondAttribute="centerX" id="T7T-rs-j0f"/>
-                            <constraint firstAttribute="centerX" secondItem="QnQ-48-qti" secondAttribute="centerX" id="Utb-fT-UHp"/>
-                            <constraint firstAttribute="centerX" secondItem="QnQ-48-qti" secondAttribute="centerX" id="fdc-81-cK8"/>
+                            <constraint firstAttribute="centerX" secondItem="QnQ-48-qti" secondAttribute="centerX" id="Wjx-ZZ-Tsz"/>
+                            <constraint firstAttribute="centerY" secondItem="QnQ-48-qti" secondAttribute="centerY" id="p5M-4z-I8T"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Record" id="JNr-cG-ndf"/>
                     <connections>
+                        <outlet property="recordButton" destination="rId-dU-ig8" id="IbE-Eh-AM7"/>
                         <outlet property="recordingInProgress" destination="JJ8-D1-8fd" id="gsi-KU-FFn"/>
+                        <outlet property="stopButton" destination="hH9-Lf-dlw" id="pHe-jA-tsc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1926" y="1018"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="43R-lJ-sUL">
+            <objects>
+                <viewController id="yTm-an-VJl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y4w-88-pzM"/>
+                        <viewControllerLayoutGuide type="bottom" id="FfX-5p-sDL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f1H-5M-hyp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="irt-KP-tvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2644" y="1018"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jvs-ee-9AX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vmM-Mf-9hU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YwC-ds-Gpp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BzJ-qw-pYT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wji-9c-DhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1114" y="1018"/>
         </scene>
     </scenes>
     <resources>
