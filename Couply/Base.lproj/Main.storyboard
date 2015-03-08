@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
     </dependencies>
     <scenes>
@@ -16,20 +17,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMj-AE-AhM">
-                                <rect key="frame" x="277" y="285" width="94" height="30"/>
-                                <state key="normal" title="Make request">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="makeRequestPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Exa-ZP-n9h"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QnQ-48-qti" userLabel="Recording Container">
+                                <rect key="frame" x="192" y="224" width="216" height="224"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ8-D1-8fd">
+                                        <rect key="frame" x="76" y="79" width="79" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH9-Lf-dlw">
+                                        <rect key="frame" x="83" y="158" width="50" height="50"/>
+                                        <state key="normal" image="Stop button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zD7-Ux-1IL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rId-dU-ig8">
+                                        <rect key="frame" x="26" y="-18" width="165" height="100"/>
+                                        <state key="normal" image="Mic">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clickToRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sz8-TT-KrL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="hH9-Lf-dlw" secondAttribute="centerY" constant="-46" id="7dA-Wh-RuB"/>
+                                    <constraint firstAttribute="centerX" secondItem="hH9-Lf-dlw" secondAttribute="centerX" id="EKQ-I9-d7W"/>
+                                    <constraint firstAttribute="centerX" secondItem="JJ8-D1-8fd" secondAttribute="centerX" constant="-7.5" id="O2G-dB-oH0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="vMj-AE-AhM" secondAttribute="centerX" constant="-24" id="00w-pE-c4B"/>
-                            <constraint firstAttribute="centerY" secondItem="vMj-AE-AhM" secondAttribute="centerY" id="zYA-5i-VgI"/>
+                            <constraint firstAttribute="centerY" secondItem="QnQ-48-qti" secondAttribute="centerY" id="FQY-cU-vvv"/>
+                            <constraint firstAttribute="centerY" secondItem="QnQ-48-qti" secondAttribute="centerY" id="Pst-Nb-Q1w"/>
+                            <constraint firstAttribute="centerX" secondItem="QnQ-48-qti" secondAttribute="centerX" id="T7T-rs-j0f"/>
+                            <constraint firstAttribute="centerX" secondItem="QnQ-48-qti" secondAttribute="centerX" id="Utb-fT-UHp"/>
+                            <constraint firstAttribute="centerX" secondItem="QnQ-48-qti" secondAttribute="centerX" id="fdc-81-cK8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -38,7 +68,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="303"/>
         </scene>
     </scenes>
     <resources>
