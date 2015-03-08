@@ -17,16 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QnQ-48-qti" userLabel="Recording Container">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QnQ-48-qti" userLabel="Recording Container">
                                 <rect key="frame" x="192" y="227" width="216" height="224"/>
                                 <subviews>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ8-D1-8fd">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ8-D1-8fd">
                                         <rect key="frame" x="76" y="79" width="79" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH9-Lf-dlw">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH9-Lf-dlw" userLabel="Stop Button">
                                         <rect key="frame" x="83" y="143" width="50" height="50"/>
                                         <state key="normal" image="Stop button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,8 +36,8 @@
                                             <segue destination="yTm-an-VJl" kind="show" id="J6A-HQ-u8J"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rId-dU-ig8">
-                                        <rect key="frame" x="26" y="-17" width="165" height="100"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rId-dU-ig8" userLabel="Record Button">
+                                        <rect key="frame" x="60" y="14" width="95" height="57"/>
                                         <state key="normal" image="Mic">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,12 +47,19 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="JJ8-D1-8fd" secondAttribute="centerX" constant="-7.5" id="3JB-Ju-bhF"/>
+                                    <constraint firstItem="rId-dU-ig8" firstAttribute="top" secondItem="QnQ-48-qti" secondAttribute="top" constant="14" id="9rI-ro-jtf"/>
+                                    <constraint firstAttribute="centerX" secondItem="rId-dU-ig8" secondAttribute="centerX" constant="0.5" id="L1n-O5-q7D"/>
+                                    <constraint firstAttribute="centerX" secondItem="hH9-Lf-dlw" secondAttribute="centerX" id="ht3-zG-m4Q"/>
+                                    <constraint firstAttribute="bottom" secondItem="hH9-Lf-dlw" secondAttribute="bottom" constant="31" id="yRn-3c-gK4"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="QnQ-48-qti" secondAttribute="centerX" id="Wjx-ZZ-Tsz"/>
-                            <constraint firstAttribute="centerY" secondItem="QnQ-48-qti" secondAttribute="centerY" id="p5M-4z-I8T"/>
+                            <constraint firstAttribute="centerX" secondItem="QnQ-48-qti" secondAttribute="centerX" id="3k0-ro-FY4"/>
+                            <constraint firstAttribute="centerY" secondItem="QnQ-48-qti" secondAttribute="centerY" constant="-39" id="c5G-K9-CxL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="JNr-cG-ndf"/>
