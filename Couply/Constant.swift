@@ -14,8 +14,8 @@ struct Constants {
     struct Server {
         
         // URLs
-        static let BaseUrl = "http://localhost:3000/"
-//        static let BaseUrl = "http://172.31.99.120:3000/"
+//        static let BaseUrl = "http://localhost:3000/"
+        static let BaseUrl = "http://192.168.0.30:3000/"
 
         static let Users = "users/"
         static let Chats = "chats/"
