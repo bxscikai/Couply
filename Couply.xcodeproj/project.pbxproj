@@ -134,6 +134,7 @@
 				1F0B1E001AA39AE400AC5E83 /* Main.storyboard */,
 				1F0B1E031AA39AE400AC5E83 /* Images.xcassets */,
 				1F0B1E051AA39AE400AC5E83 /* LaunchScreen.xib */,
+				5F5748D41AACCBB700D16DB7 /* Alamofire.xcodeproj */,
 				1F0B1DFA1AA39AE400AC5E83 /* Supporting Files */,
 			);
 			path = Couply;
