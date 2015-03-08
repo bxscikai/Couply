@@ -32,10 +32,17 @@
                             <constraint firstAttribute="centerY" secondItem="vMj-AE-AhM" secondAttribute="centerY" id="zYA-5i-VgI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="recordingInProgress" destination="JJ8-D1-8fd" id="gsi-KU-FFn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="305" y="303"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Mic" width="50" height="50"/>
+        <image name="Stop button" width="50" height="50"/>
+    </resources>
 </document>
