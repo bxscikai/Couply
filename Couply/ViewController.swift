@@ -36,7 +36,6 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         stopButton.hidden=true
     }
-    
 
     @IBAction func clickToRecord(sender: UIButton) {
         recordingInProgress.hidden=false
