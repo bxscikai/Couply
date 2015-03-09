@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Record-->
@@ -84,9 +86,67 @@
                     <view key="view" contentMode="scaleToFill" id="DVH-7Y-jZK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bZw-fW-Qio">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="120" id="XIF-cs-w2m" customClass="ChatCell" customModule="Couply">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XIF-cs-w2m" id="7kW-jz-eLp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ZW-BU-Srv">
+                                                    <rect key="frame" x="23" y="10" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="MaE-ZU-wG5"/>
+                                                        <constraint firstAttribute="height" constant="100" id="Y8G-KL-zmG"/>
+                                                        <constraint firstAttribute="width" secondItem="4ZW-BU-Srv" secondAttribute="height" multiplier="1:1" id="z0R-l4-3gt"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DX9-qO-lFN">
+                                                    <rect key="frame" x="477" y="8" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="DX9-qO-lFN" secondAttribute="height" multiplier="1:1" id="ZCO-fw-vV4"/>
+                                                        <constraint firstAttribute="width" constant="100" id="eQO-zQ-Zfq"/>
+                                                        <constraint firstAttribute="height" constant="100" id="x6A-Ea-XDT"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="DX9-qO-lFN" secondAttribute="trailing" constant="15" id="8du-yX-EbN"/>
+                                                <constraint firstAttribute="centerY" secondItem="DX9-qO-lFN" secondAttribute="centerY" constant="2" id="Hcu-z0-Zac"/>
+                                                <constraint firstItem="4ZW-BU-Srv" firstAttribute="leading" secondItem="7kW-jz-eLp" secondAttribute="leadingMargin" constant="15" id="aln-Xt-Zdk"/>
+                                                <constraint firstAttribute="centerY" secondItem="4ZW-BU-Srv" secondAttribute="centerY" id="hBk-Ip-3bc"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="partnerEmoji" destination="4ZW-BU-Srv" id="eBz-Gi-Vu7"/>
+                                            <outlet property="userEmoji" destination="DX9-qO-lFN" id="A2x-wT-03u"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="k5e-1n-jaj" id="MuI-j7-8xg"/>
+                                    <outlet property="delegate" destination="k5e-1n-jaj" id="fqI-61-0Hg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="bZw-fW-Qio" secondAttribute="centerX" id="4Ue-BV-qg9"/>
+                            <constraint firstAttribute="centerY" secondItem="bZw-fW-Qio" secondAttribute="centerY" id="8zj-IE-9BL"/>
+                            <constraint firstAttribute="height" secondItem="bZw-fW-Qio" secondAttribute="height" id="I3Q-SU-6uJ"/>
+                            <constraint firstAttribute="width" secondItem="bZw-fW-Qio" secondAttribute="width" id="tIA-Wr-Pzb"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Messages" id="clg-iy-azC"/>
+                    <connections>
+                        <outlet property="messagesTable" destination="bZw-fW-Qio" id="y7m-Xx-VKG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VtI-7d-d5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

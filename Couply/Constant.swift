@@ -17,7 +17,7 @@ struct Constants {
         
         // URLs
 //        static let BaseUrl = "http://localhost:3000/"
-        static let BaseUrl = "http://192.168.0.30:3000/"
+        static let BaseUrl = "http://192.168.0.32:3000/"
 
         static let Users = "users/"
         static let Chats = "chats/"
@@ -31,6 +31,7 @@ struct Constants {
         // Query keys
         static let query_username = "username"
         static let query_partnerName = "partnerName"
+        static let query_deviceToken = "deviceToken"
     }
     
     struct Key {
@@ -44,5 +45,9 @@ struct Constants {
         struct message {
         
         }
+    }
+    
+    struct UIIdentifiers {
+        static let chatCellIdentifier = "chatCell"
     }
 }

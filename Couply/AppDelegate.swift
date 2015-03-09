@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Push notification handling
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        println("Successfully registered for push notification. Device token:\(deviceToken)")
+        Cache.sharedInstance.deviceToken = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet.init(charactersInString: "<>")).stringByReplacingOccurrencesOfString(" ", withString: "")
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

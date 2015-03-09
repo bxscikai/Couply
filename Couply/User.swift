@@ -13,4 +13,6 @@ class User : Serializable {
     var username : String = ""
     var partnerName : String = ""
     var pending_partnerName : String = ""
+    var deviceToken : String = ""
+    var _id : String = ""
 }

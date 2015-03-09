@@ -12,6 +12,7 @@ private let _cache = Cache()
 
 class Cache: NSObject {
  
+    /// Properties //////
     var user : User? {
         didSet {
             if ((user) != nil) {
@@ -19,6 +20,14 @@ class Cache: NSObject {
             }
         }
     }
+    
+    var chats : NSMutableArray = []
+    
+    var deviceToken : NSString = ""
+    
+    
+    
+    /// End of Properties //////
     
     class var sharedInstance : Cache {
         return _cache;

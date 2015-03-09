@@ -87,18 +87,11 @@ public class Serializable : NSObject{
         // Loop
         for (key, value) in JSONDict {
             let keyName = key as! String
-            var keyValue: AnyObject? = ""
-            
-            // Handle different value types
-            if (value.isKindOfClass(NSDictionary)) {
-               keyValue = value
-            }
-            else if (value.isKindOfClass(NSString)) {
-                keyValue = value as! String
-            }
+            var keyValue: AnyObject? = value
             
             // If property exists
-            if (self.respondsToSelector(NSSelectorFromString(keyName))) {
+            if (self.respondsToSelector(NSSelectorFromString(keyName)) && !(keyValue is NSNull))
+            {
                 self.setValue(keyValue, forKey: keyName)
             }
         }

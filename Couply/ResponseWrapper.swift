@@ -11,10 +11,14 @@ import Foundation
 class ResponseWrapper: Serializable {
     var status : String = ""
     var message : String = ""
-    var content : NSDictionary = [:]
+    var content : AnyObject = NSObject()
+    var error : NSError?
     
     override init(JSONDict: NSDictionary) {
         super.init(JSONDict: JSONDict)
         
+        if (status == "error") {
+            self.error = NSError.errorWithMessage(self.message)
+        }
     }
 }

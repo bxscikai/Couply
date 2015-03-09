@@ -11,39 +11,89 @@ import Alamofire
 
 class Server: NSObject {
 
-    class func getUser(username : String, completion : (user : User?, error: NSError?) -> Void) {
-        
-        Alamofire.request(Method.GET, Constants.Server.GetUserUrl, parameters: [Constants.Server.query_username: username])
+    // Get user
+    class func getUser(username : String, completion : (user : User?, error: NSError?) -> Void)
+    {
+        Alamofire.request(Method.GET, Constants.Server.GetUserUrl, parameters:
+            [Constants.Server.query_username: username, Constants.Server.query_deviceToken : Cache.sharedInstance.deviceToken])
                  .responseJSON { (_, _, JSON, error) in
 
-                    var err = Server.checkForError(JSON as! NSDictionary?, error: error as NSError?)
+                    // Error handling
+                    let (err, response) = Server.checkForError(JSON as! NSDictionary?, error: error as NSError?)
                     if (err != nil) {
                         completion(user:nil, error: err)
+                        return
                     }
-                    else {
-                        var response = ResponseWrapper(JSONDict: JSON as! NSDictionary)
-                        var resultUser : User = User(JSONDict: response.content)
-                        Cache.sharedInstance.user = resultUser
-                        completion(user: resultUser, error: nil)
+                    
+                    // Returning response
+                    var resultUser : User = User(JSONDict: response!.content as! NSDictionary)
+                    Cache.sharedInstance.user = resultUser
+                    completion(user: resultUser, error: nil)
+                    return
+        }
+    }
+    
+    // Get chats
+    class func getChats(completion : (chats : NSMutableArray?, error : NSError?) ->Void)
+    {
+        // Ensure we have the user first
+        if (Cache.sharedInstance.user == nil) {
+            completion(chats: nil, error: NSError.errorWithMessage("No cached user"))
+            return
+        }
+        
+        Alamofire.request(Method.GET, Constants.Server.GetChatsUrl, parameters: [Constants.Server.query_username: Cache.sharedInstance.user!.username])
+            .responseJSON { (_, _, JSON, error) in
+                
+                // Error handling
+                let (err, response) = Server.checkForError(JSON as! NSDictionary?, error: error as NSError?)
+                if (err != nil) {
+                    completion(chats:nil, error: err)
+                    return
+                }
+                
+                // Returning response
+                var chatsDictArray : NSArray = response!.content as! NSArray
+                var chats : NSMutableArray = NSMutableArray()
+                for chatObj in chatsDictArray
+                {
+                    if let chat = chatObj as? NSDictionary {
+                        chats.addObject(Chat(JSONDict: chat))
                     }
+                }
+                Cache.sharedInstance.chats = chats
+                completion(chats: chats, error: nil)
         }
     }
     
     class func fetchInitialData(completion : (error : NSError?) -> Void) {
 
+        let sema = dispatch_semaphore_create(0);
+        
+        getChats { (chats, error) -> Void in
+            println("Returned chats: \(chats) error:\(error)")
+            completion(error: error)
+            dispatch_semaphore_signal(sema)
+        }
+        
+        dispatch_semaphore_wait(sema, 5000)
     }
     
-    private class func checkForError(JSONDict : NSDictionary?, error : NSError?) -> NSError? {
+    private class func checkForError(JSONDict : NSDictionary?, error : NSError?) -> (NSError?, response : ResponseWrapper?) {
         if (error != nil) {
-            return error
+            return (error, nil)
         }
-        else if (JSONDict == nil) {
-            var err = NSError(domain: Constants.appDomain,
-                                code: 400,
-                            userInfo:[NSLocalizedDescriptionKey : "Return JSON is empty"])
-            return err
+        if (JSONDict == nil) {
+            return (NSError.errorWithMessage("Return JSON is empty"), nil)
         }
-        return nil
+        // Return error if response contains error
+        var response = ResponseWrapper(JSONDict: JSONDict! as NSDictionary)
+        if (response.error != nil) {
+            return(response.error, nil)
+        }
+        else {
+            return (nil, response)
+        }
     }
     
 }
