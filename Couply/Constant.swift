@@ -10,6 +10,8 @@ import Foundation
 
 struct Constants {
     
+    static var appDomain = "Couply"
+    
     // Server related constant
     struct Server {
         
@@ -33,5 +35,14 @@ struct Constants {
     
     struct Key {
         static let cache_user = "userkey"
+    }
+    
+    struct error {
+        struct code {
+            
+        }
+        struct message {
+        
+        }
     }
 }

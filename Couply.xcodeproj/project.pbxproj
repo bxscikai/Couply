@@ -11,13 +11,17 @@
 		1F0B1DFF1AA39AE400AC5E83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0B1DFE1AA39AE400AC5E83 /* ViewController.swift */; };
 		1F0B1E021AA39AE400AC5E83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0B1E001AA39AE400AC5E83 /* Main.storyboard */; };
 		1F0B1E041AA39AE400AC5E83 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F0B1E031AA39AE400AC5E83 /* Images.xcassets */; };
-		1F0B1E071AA39AE400AC5E83 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0B1E051AA39AE400AC5E83 /* LaunchScreen.xib */; };
 		1F0B1E131AA39AE400AC5E83 /* CouplyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0B1E121AA39AE400AC5E83 /* CouplyTests.swift */; };
 		1F0B1E201AA6C53900AC5E83 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0B1E1F1AA6C53900AC5E83 /* Server.swift */; };
 		1F0B1E221AA6C6D500AC5E83 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0B1E211AA6C6D500AC5E83 /* Constant.swift */; };
 		1F0B1E3C1AA964E800AC5E83 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0B1E3B1AA964E800AC5E83 /* Cache.swift */; };
 		1F8A75BD1AACCCC800D50D5B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8A75BC1AACCCBE00D50D5B /* Alamofire.framework */; };
 		1F8A75BE1AACCCC800D50D5B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8A75BC1AACCCBE00D50D5B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1FCCFB8B1AACDE1500E7366D /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB8A1AACDE1500E7366D /* Serializable.swift */; };
+		1FCCFB8D1AACE0B300E7366D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB8C1AACE0B300E7366D /* User.swift */; };
+		1FCCFB8F1AACE19400E7366D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB8E1AACE19400E7366D /* Chat.swift */; };
+		1FCCFB911AACF18200E7366D /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB901AACF18200E7366D /* MessagesViewController.swift */; };
+		1FCCFB931AACFA7600E7366D /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB921AACFA7600E7366D /* ResponseWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +79,6 @@
 		1F0B1DFE1AA39AE400AC5E83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F0B1E011AA39AE400AC5E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F0B1E031AA39AE400AC5E83 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1F0B1E061AA39AE400AC5E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1F0B1E0C1AA39AE400AC5E83 /* CouplyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CouplyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F0B1E111AA39AE400AC5E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F0B1E121AA39AE400AC5E83 /* CouplyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouplyTests.swift; sourceTree = "<group>"; };
@@ -83,6 +86,11 @@
 		1F0B1E211AA6C6D500AC5E83 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1F0B1E3B1AA964E800AC5E83 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		1F8A75B71AACCCBE00D50D5B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Libs/Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
+		1FCCFB8A1AACDE1500E7366D /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
+		1FCCFB8C1AACE0B300E7366D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1FCCFB8E1AACE19400E7366D /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		1FCCFB901AACF18200E7366D /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		1FCCFB921AACFA7600E7366D /* ResponseWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,16 +133,16 @@
 		1F0B1DF91AA39AE400AC5E83 /* Couply */ = {
 			isa = PBXGroup;
 			children = (
+				1FCCFB891AACDDAD00E7366D /* Model */,
 				1F8A75B61AACCCA900D50D5B /* Lib */,
 				1F0B1DFC1AA39AE400AC5E83 /* AppDelegate.swift */,
 				1F0B1DFE1AA39AE400AC5E83 /* ViewController.swift */,
 				1F0B1E1F1AA6C53900AC5E83 /* Server.swift */,
 				1F0B1E211AA6C6D500AC5E83 /* Constant.swift */,
 				1F0B1E3B1AA964E800AC5E83 /* Cache.swift */,
+				1FCCFB901AACF18200E7366D /* MessagesViewController.swift */,
 				1F0B1E001AA39AE400AC5E83 /* Main.storyboard */,
 				1F0B1E031AA39AE400AC5E83 /* Images.xcassets */,
-				1F0B1E051AA39AE400AC5E83 /* LaunchScreen.xib */,
-				5F5748D41AACCBB700D16DB7 /* Alamofire.xcodeproj */,
 				1F0B1DFA1AA39AE400AC5E83 /* Supporting Files */,
 			);
 			path = Couply;
@@ -179,6 +187,17 @@
 				1F8A75BC1AACCCBE00D50D5B /* Alamofire.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1FCCFB891AACDDAD00E7366D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FCCFB8A1AACDE1500E7366D /* Serializable.swift */,
+				1FCCFB8C1AACE0B300E7366D /* User.swift */,
+				1FCCFB8E1AACE19400E7366D /* Chat.swift */,
+				1FCCFB921AACFA7600E7366D /* ResponseWrapper.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F0B1E021AA39AE400AC5E83 /* Main.storyboard in Resources */,
-				1F0B1E071AA39AE400AC5E83 /* LaunchScreen.xib in Resources */,
 				1F0B1E041AA39AE400AC5E83 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,11 +318,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FCCFB931AACFA7600E7366D /* ResponseWrapper.swift in Sources */,
 				1F0B1DFF1AA39AE400AC5E83 /* ViewController.swift in Sources */,
 				1F0B1E3C1AA964E800AC5E83 /* Cache.swift in Sources */,
 				1F0B1E201AA6C53900AC5E83 /* Server.swift in Sources */,
+				1FCCFB911AACF18200E7366D /* MessagesViewController.swift in Sources */,
 				1F0B1DFD1AA39AE400AC5E83 /* AppDelegate.swift in Sources */,
 				1F0B1E221AA6C6D500AC5E83 /* Constant.swift in Sources */,
+				1FCCFB8F1AACE19400E7366D /* Chat.swift in Sources */,
+				1FCCFB8B1AACDE1500E7366D /* Serializable.swift in Sources */,
+				1FCCFB8D1AACE0B300E7366D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,14 +361,6 @@
 				1F0B1E011AA39AE400AC5E83 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1F0B1E051AA39AE400AC5E83 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F0B1E061AA39AE400AC5E83 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -438,6 +453,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Couply/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -450,6 +466,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Couply/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

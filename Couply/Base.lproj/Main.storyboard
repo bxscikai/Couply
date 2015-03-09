@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vmM-Mf-9hU">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
     </dependencies>
     <scenes>
         <!--Record-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Couply" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Record" id="BYZ-38-t0r" customClass="ViewController" customModule="Couply" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QnQ-48-qti" userLabel="Recording Container">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QnQ-48-qti" userLabel="Recording Container">
                                 <rect key="frame" x="192" y="227" width="216" height="224"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ8-D1-8fd">
@@ -70,7 +71,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1926" y="1018"/>
+            <point key="canvasLocation" x="2236" y="1018"/>
+        </scene>
+        <!--Messages Controller-->
+        <scene sceneID="447-Xd-HeT">
+            <objects>
+                <viewController title="Messages" id="k5e-1n-jaj" userLabel="Messages Controller" customClass="MessagesViewController" customModule="Couply" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CuP-44-g8Z"/>
+                        <viewControllerLayoutGuide type="bottom" id="bdx-o8-5EU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DVH-7Y-jZK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Messages" id="clg-iy-azC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VtI-7d-d5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2239" y="1740"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="43R-lJ-sUL">
@@ -88,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="irt-KP-tvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2644" y="1018"/>
+            <point key="canvasLocation" x="2912" y="1018"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jvs-ee-9AX">
@@ -101,12 +121,55 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BzJ-qw-pYT"/>
+                        <segue destination="TI6-GQ-1IP" kind="relationship" relationship="rootViewController" id="qBb-aM-fIK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wji-9c-DhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114" y="1018"/>
+            <point key="canvasLocation" x="804" y="1018"/>
+        </scene>
+        <!--Main Controller-->
+        <scene sceneID="aEG-kA-T9V">
+            <objects>
+                <viewController id="TI6-GQ-1IP" userLabel="Main Controller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1pG-KT-S2D"/>
+                        <viewControllerLayoutGuide type="bottom" id="bEP-EL-9ec"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ent-NP-bgr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFm-DO-vOE">
+                                <rect key="frame" x="229" y="144" width="142" height="30"/>
+                                <state key="normal" title="To Record Controller">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="H1Y-2v-4bm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5Z-k7-1Sw">
+                                <rect key="frame" x="219" y="220" width="162" height="30"/>
+                                <state key="normal" title="To Messages Controller">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="k5e-1n-jaj" kind="show" id="D3x-6E-2Ue"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="cFm-DO-vOE" secondAttribute="centerX" id="Mqv-rj-1fX"/>
+                            <constraint firstAttribute="centerX" secondItem="h5Z-k7-1Sw" secondAttribute="centerX" id="xK2-Ia-P1a"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Main Controller" id="myT-gv-ZFs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l6i-Tg-i05" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1528" y="1018"/>
         </scene>
     </scenes>
     <resources>
