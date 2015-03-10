@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RecordSoundViewController.swift
 //  Couply
 //
 //  Created by Chenkai Liu on 3/1/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RecordSoundViewController: UIViewController {
 
     @IBAction func makeRequestPressed(sender: AnyObject) {
         Server.getUser("Chenkai")
