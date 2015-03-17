@@ -33,6 +33,11 @@ class Cache: NSObject {
         return _cache;
     }
     
+    func addChat(chat : Chat) {
+        chats.addObject(chat)
+        chats = NSMutableArray(array: Chat.sortChats(chats))
+    }
+    
     override init() {
         var userString : String? = NSUserDefaults.standardUserDefaults().objectForKey(Constants.Key.cache_user) as! String?
         if (userString != nil) {

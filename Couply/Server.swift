@@ -14,8 +14,10 @@ class Server: NSObject {
     // Get user
     class func getUser(username : String, completion : (user : User?, error: NSError?) -> Void)
     {
-        Alamofire.request(Method.GET, Constants.Server.GetUserUrl, parameters:
-            [Constants.Server.query_username: username, Constants.Server.query_deviceToken : Cache.sharedInstance.deviceToken])
+        var queryParameters = [Constants.Server.query_username: username, Constants.Server.query_deviceToken : Cache.sharedInstance.deviceToken]
+        println("Get user url: \(Constants.Server.GetUserUrl)")
+        
+        Alamofire.request(Method.GET, Constants.Server.GetUserUrl, parameters:queryParameters)
                  .responseJSON { (_, _, JSON, error) in
 
                     // Error handling
@@ -61,8 +63,27 @@ class Server: NSObject {
                         chats.addObject(Chat(JSONDict: chat))
                     }
                 }
-                Cache.sharedInstance.chats = chats
+            
+                // Sort chats
+                Cache.sharedInstance.chats = NSMutableArray(array: Chat.sortChats(chats))
                 completion(chats: chats, error: nil)
+        }
+    }
+    
+    // Send chat
+    class func sendChat(chat : Chat, completion : (error : NSError?) ->Void)
+    {
+        var queryParameters = [Constants.Server.query_senderName: chat.senderName,
+            Constants.Server.query_receiverName : chat.receiverName,
+            Constants.Server.query_emojiId : chat.emojiId,
+            Constants.Server.query_timestamp : chat.timestamp]
+        
+        Alamofire.request(Method.POST, Constants.Server.PostChatsUrl, parameters:queryParameters)
+            .responseJSON { (_, _, JSON, error) in
+                
+                // Error handling
+                let (err, response) = Server.checkForError(JSON as! NSDictionary?, error: error as NSError?)
+                completion(error: err)
         }
     }
     

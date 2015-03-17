@@ -97,4 +97,8 @@ public class Serializable : NSObject{
         }
     }
     
+    public override init() {
+        super.init()
+    }
+    
 }

@@ -15,20 +15,47 @@ class ChatCell : UITableViewCell {
     @IBOutlet weak var userEmoji: UIImageView!
 }
 
-class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatEmojiCollection : UICollectionViewCell {
+    
+    @IBOutlet weak var emojiButton: UIButton!
+}
+
+class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var messagesTable: UITableView!
-    
+    @IBOutlet weak var emojiCollectionView: UICollectionView!
     
     override func viewDidLoad() {
-        
+        // Register for notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedRemoteNotfication:", name:Constants.Notification.pushnotification_key, object: nil)
         fetchUserIfRequired()
         fetchInitialData()
         setUpUI()
     }
     
+    override func viewWillAppear(animated: Bool) {
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        scrollToBottom()
+    }
+    
     func setUpUI() {
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "heartPattern")!)
+        self.messagesTable.backgroundColor = UIColor(patternImage: UIImage(named: "messageBackground")!)
+        self.emojiCollectionView.backgroundColor = UIColor(patternImage: UIImage(named: "emojiBackground")!)
+        if (Cache.sharedInstance.user != nil)
+        {
+            self.title = Cache.sharedInstance.user!.partnerName
+        }
+    }
+    
+    func scrollToBottom() {
+        // Start tableview scrolled all the way to the bottom
+        if (Cache.sharedInstance.chats.count > 0)
+        {
+            var indexPath : NSIndexPath = NSIndexPath(forRow: Cache.sharedInstance.chats.count - 1, inSection: 0)
+            self.messagesTable.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        }
     }
     
     func fetchUserIfRequired() {
@@ -47,7 +74,9 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         // Login action: Fetch chats after we get the user name
         let loginAction = UIAlertAction(title: "Set", style: .Default) { (_) in
             let usernameTextField = alertController.textFields![0] as! UITextField
-            Server.getUser(usernameTextField.text, completion: { (user, error) -> Void in
+            let username = usernameTextField.text
+            Server.getUser(username, completion: { (user, error) -> Void in
+                self.title = Cache.sharedInstance.user!.partnerName
                 self.fetchInitialData()
             })
         }
@@ -69,6 +98,16 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func fetchInitialData() {
         Server.fetchInitialData { (error) -> Void in
             self.messagesTable.reloadData()
+            self.scrollToBottom()
+        }
+    }
+    
+    func receivedRemoteNotfication(notification: NSNotification){
+        if (notification.object != nil) {
+            var chat : Chat = notification.object as! Chat
+            Cache.sharedInstance.addChat(chat)
+            self.messagesTable.reloadData()
+            self.scrollToBottom()
         }
     }
     
@@ -81,9 +120,53 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell = self.messagesTable.dequeueReusableCellWithIdentifier(Constants.UIIdentifiers.chatCellIdentifier, forIndexPath: indexPath) as! ChatCell
-//        Chat chat = Cache.sharedInstance.chats[indexPath.row]
+        var chat : Chat = Cache.sharedInstance.chats[indexPath.row] as! Chat
+        var emoji : UIImage = EmojiManager.getEmojiImageWithId(chat.emojiId.integerValue)!
         
+        if (chat.senderName == Cache.sharedInstance.user!.username) {
+            cell.userEmoji.image = emoji
+            cell.partnerEmoji.image = nil
+        }
+        else {
+            cell.partnerEmoji.image = emoji
+            cell.userEmoji.image = nil
+        }
+
+        return cell
+    }
+    
+// MARK: UICollectionViewDelegate
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    {
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.UIIdentifiers.emojiCollectionCellIdentifier, forIndexPath: indexPath) as! ChatEmojiCollection
+        cell.emojiButton.tag = indexPath.row + 1
+        cell.emojiButton.setImage(EmojiManager.getEmojiImageWithId(indexPath.row+1), forState: UIControlState.Normal)
+        cell.emojiButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return EmojiManager.numberOfEmojis
+    }
+    
+    // Emoji Pressed
+    @IBAction func emojiPressed(sender: AnyObject)
+    {
+        var button : UIButton = sender as! UIButton
+        println("Pressed emoji up: \(button.tag)")
+        var chat : Chat = Chat.init(emojiIdSending:button.tag)
+        Server.sendChat(chat, completion: { (error) -> Void in
+            if (error != nil) {
+                println("Error when sending chat: \(error)")
+            }
+            else
+            {
+                Cache.sharedInstance.addChat(chat)
+                self.messagesTable.reloadData()
+                self.scrollToBottom()
+            }
+            
+            })
     }
 }

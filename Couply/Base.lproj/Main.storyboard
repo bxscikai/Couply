@@ -88,16 +88,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bZw-fW-Qio">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="120" id="XIF-cs-w2m" customClass="ChatCell" customModule="Couply">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="120" id="XIF-cs-w2m" customClass="ChatCell" customModule="Couply">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XIF-cs-w2m" id="7kW-jz-eLp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ZW-BU-Srv">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ZW-BU-Srv">
                                                     <rect key="frame" x="23" y="10" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="MaE-ZU-wG5"/>
@@ -105,7 +105,7 @@
                                                         <constraint firstAttribute="width" secondItem="4ZW-BU-Srv" secondAttribute="height" multiplier="1:1" id="z0R-l4-3gt"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DX9-qO-lFN">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DX9-qO-lFN">
                                                     <rect key="frame" x="477" y="8" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="DX9-qO-lFN" secondAttribute="height" multiplier="1:1" id="ZCO-fw-vV4"/>
@@ -134,17 +134,74 @@
                                     <outlet property="delegate" destination="k5e-1n-jaj" id="fqI-61-0Hg"/>
                                 </connections>
                             </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="URa-yq-3c6">
+                                <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4yl-CJ-Dmd"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WxN-xI-oRh">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emojiCollectionCell" id="5bJ-3g-Wq7" customClass="ChatEmojiCollection" customModule="Couply" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdx-ze-cc9" userLabel="emojiButton">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="OzJ-wJ-096"/>
+                                                        <constraint firstAttribute="width" constant="100" id="ph4-u5-xOl"/>
+                                                    </constraints>
+                                                    <state key="normal">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="emojiPressed:" destination="k5e-1n-jaj" eventType="touchUpInside" id="w3V-Yw-DDi"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="Zdx-ze-cc9" secondAttribute="centerX" id="VTk-a8-r2w"/>
+                                            <constraint firstAttribute="centerY" secondItem="Zdx-ze-cc9" secondAttribute="centerY" id="lNO-Xr-fWa"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="emojiButton" destination="Zdx-ze-cc9" id="roZ-dh-xDB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="k5e-1n-jaj" id="raT-wZ-v7l"/>
+                                    <outlet property="delegate" destination="k5e-1n-jaj" id="GNS-8k-DWX"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="bZw-fW-Qio" secondAttribute="centerX" id="4Ue-BV-qg9"/>
-                            <constraint firstAttribute="centerY" secondItem="bZw-fW-Qio" secondAttribute="centerY" id="8zj-IE-9BL"/>
-                            <constraint firstAttribute="height" secondItem="bZw-fW-Qio" secondAttribute="height" id="I3Q-SU-6uJ"/>
+                            <constraint firstAttribute="width" secondItem="URa-yq-3c6" secondAttribute="width" id="9Dn-0d-asF"/>
+                            <constraint firstItem="bdx-o8-5EU" firstAttribute="top" secondItem="URa-yq-3c6" secondAttribute="bottom" id="BA6-iE-rRw"/>
+                            <constraint firstItem="bZw-fW-Qio" firstAttribute="bottom" secondItem="URa-yq-3c6" secondAttribute="top" id="WUg-WE-325"/>
+                            <constraint firstAttribute="centerX" secondItem="URa-yq-3c6" secondAttribute="centerX" id="c85-4Z-e9v"/>
                             <constraint firstAttribute="width" secondItem="bZw-fW-Qio" secondAttribute="width" id="tIA-Wr-Pzb"/>
+                            <constraint firstItem="bZw-fW-Qio" firstAttribute="top" secondItem="CuP-44-g8Z" secondAttribute="bottom" constant="-64" id="tiU-ZV-cH6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Messages" id="clg-iy-azC"/>
                     <connections>
+                        <outlet property="emojiCollectionView" destination="URa-yq-3c6" id="xGU-Ju-YGP"/>
                         <outlet property="messagesTable" destination="bZw-fW-Qio" id="y7m-Xx-VKG"/>
                     </connections>
                 </viewController>

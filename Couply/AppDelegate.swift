@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(setting);
         UIApplication.sharedApplication().registerForRemoteNotifications();
         
+        getServerBaseIP()
+        
         return true
     }
 
@@ -42,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        application.applicationIconBadgeNumber = 0;
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -56,6 +59,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         println("Failed to register for push notification. Error:\(error)");
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        println("Received push notification: \(userInfo)")
+
+        if (userInfo.count > 0) {
+            var apsDict = userInfo["aps"] as! NSDictionary
+            var emojiId : NSNumber =  (userInfo["emojiId"] as! NSString).integerValue
+            var timestamp : NSNumber = (userInfo["timestamp"] as! NSString).doubleValue
+            var receivedChat : Chat = Chat(emojiIdReceiving: emojiId, timestamp: timestamp)
+            NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.pushnotification_key, object:receivedChat)
+        }
+    }
+    
+    func getServerBaseIP(){
+        // Get Server IP
+        let url = NSURL(string: Constants.Server.dynamicIPUrl)
+        let serverData = NSData(contentsOfURL: url!)
+        if (serverData != nil) {
+            let newIP = NSString(data: serverData!, encoding: UInt())
+            Constants.Server.BaseUrl = newIP as! String
+            println("Using fetched IP: \(newIP)")
+        }
     }
 }
 

@@ -16,6 +16,7 @@
 		1F0B1E221AA6C6D500AC5E83 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0B1E211AA6C6D500AC5E83 /* Constant.swift */; };
 		1F0B1E3C1AA964E800AC5E83 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0B1E3B1AA964E800AC5E83 /* Cache.swift */; };
 		1F12E6E91AADE951002198F9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F12E6E81AADE951002198F9 /* Extensions.swift */; };
+		1F6E48451AAFDEA500011A75 /* EmojiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E48441AAFDEA500011A75 /* EmojiManager.swift */; };
 		1F8A75BD1AACCCC800D50D5B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8A75BC1AACCCBE00D50D5B /* Alamofire.framework */; };
 		1F8A75BE1AACCCC800D50D5B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8A75BC1AACCCBE00D50D5B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1FA12EFA1AAE564300F2E563 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA12EF01AAE564300F2E563 /* 1.png */; };
@@ -98,6 +99,7 @@
 		1F0B1E211AA6C6D500AC5E83 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1F0B1E3B1AA964E800AC5E83 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		1F12E6E81AADE951002198F9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1F6E48441AAFDEA500011A75 /* EmojiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiManager.swift; sourceTree = "<group>"; };
 		1F8A75B71AACCCBE00D50D5B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Libs/Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 		1FA12EF01AAE564300F2E563 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		1FA12EF11AAE564300F2E563 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				1F0B1E211AA6C6D500AC5E83 /* Constant.swift */,
 				1F0B1E3B1AA964E800AC5E83 /* Cache.swift */,
 				1FCCFB901AACF18200E7366D /* MessagesViewController.swift */,
+				1F6E48441AAFDEA500011A75 /* EmojiManager.swift */,
 				1F0B1E001AA39AE400AC5E83 /* Main.storyboard */,
 				1F0B1DFA1AA39AE400AC5E83 /* Supporting Files */,
 			);
@@ -393,6 +396,7 @@
 				1FCCFB931AACFA7600E7366D /* ResponseWrapper.swift in Sources */,
 				1F0B1DFF1AA39AE400AC5E83 /* ViewController.swift in Sources */,
 				1F0B1E3C1AA964E800AC5E83 /* Cache.swift in Sources */,
+				1F6E48451AAFDEA500011A75 /* EmojiManager.swift in Sources */,
 				1F0B1E201AA6C53900AC5E83 /* Server.swift in Sources */,
 				1FCCFB911AACF18200E7366D /* MessagesViewController.swift in Sources */,
 				1F0B1DFD1AA39AE400AC5E83 /* AppDelegate.swift in Sources */,
