@@ -11,7 +11,8 @@ import UIKit
 
 class EmojiManager : NSObject {
     
-    static var numberOfEmojis = 10
+    static var numberOfEmojis = 17
+    
     
     static func getEmojiImageWithId(emojiId : Int) -> UIImage? {
         if (emojiId > numberOfEmojis) {
