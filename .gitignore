@@ -8,3 +8,5 @@ Podfile
 Pods/Alamofire/LICENSE
 
 *.md
+
+Couply.xcodeproj/xcuserdata/icelance11.xcuserdatad/xcschemes/xcschememanagement.plist
