@@ -42,6 +42,12 @@
 		1FCCFB8F1AACE19400E7366D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB8E1AACE19400E7366D /* Chat.swift */; };
 		1FCCFB911AACF18200E7366D /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB901AACF18200E7366D /* MessagesViewController.swift */; };
 		1FCCFB931AACFA7600E7366D /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB921AACFA7600E7366D /* ResponseWrapper.swift */; };
+		5F3287E91AB7DBD6009C023B /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3287E81AB7DBD6009C023B /* RecordedAudio.swift */; };
+		5F5748DA1AACCBDA00D16DB7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5748D91AACCBB700D16DB7 /* Alamofire.framework */; };
+		5F5748DB1AACCBDA00D16DB7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5748D91AACCBB700D16DB7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F5748DF1AACD3FF00D16DB7 /* PlaySoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5748DE1AACD3FF00D16DB7 /* PlaySoundViewController.swift */; };
+		5FB638C61AAE7B3C005A0A9B /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FB638C51AAE7B3C005A0A9B /* movie_quote.mp3 */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +137,9 @@
 		1FCCFB8E1AACE19400E7366D /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		1FCCFB901AACF18200E7366D /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		1FCCFB921AACFA7600E7366D /* ResponseWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
+		5F3287E81AB7DBD6009C023B /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
+		5F5748DE1AACD3FF00D16DB7 /* PlaySoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundViewController.swift; sourceTree = "<group>"; };
+		5FB638C51AAE7B3C005A0A9B /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +188,7 @@
 				1F8A75B61AACCCA900D50D5B /* Lib */,
 				1F0B1DFC1AA39AE400AC5E83 /* AppDelegate.swift */,
 				1F0B1DFE1AA39AE400AC5E83 /* RecordSoundViewController.swift */,
+				5F3287E81AB7DBD6009C023B /* RecordedAudio.swift */,
 				1F0B1E1F1AA6C53900AC5E83 /* Server.swift */,
 				1F0B1E211AA6C6D500AC5E83 /* Constant.swift */,
 				1F0B1E3B1AA964E800AC5E83 /* Cache.swift */,
@@ -194,6 +204,7 @@
 		1F0B1DFA1AA39AE400AC5E83 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FB638C51AAE7B3C005A0A9B /* movie_quote.mp3 */,
 				1F0B1DFB1AA39AE400AC5E83 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -401,6 +412,8 @@
 				1FA12EFF1AAE564300F2E563 /* 5.png in Resources */,
 				1F1845141ABBB56B0017C7A8 /* 13.png in Resources */,
 				1FA12F011AAE564300F2E563 /* 7.png in Resources */,
+				1F0B1E071AA39AE400AC5E83 /* LaunchScreen.xib in Resources */,
+				5FB638C61AAE7B3C005A0A9B /* movie_quote.mp3 in Resources */,
 				1F0B1E041AA39AE400AC5E83 /* Images.xcassets in Resources */,
 				1F1845151ABBB56B0017C7A8 /* 14.png in Resources */,
 			);
@@ -428,6 +441,8 @@
 				1F0B1E201AA6C53900AC5E83 /* Server.swift in Sources */,
 				1FCCFB911AACF18200E7366D /* MessagesViewController.swift in Sources */,
 				1F0B1DFD1AA39AE400AC5E83 /* AppDelegate.swift in Sources */,
+				5F3287E91AB7DBD6009C023B /* RecordedAudio.swift in Sources */,
+				5F5748DF1AACD3FF00D16DB7 /* PlaySoundViewController.swift in Sources */,
 				1F0B1E221AA6C6D500AC5E83 /* Constant.swift in Sources */,
 				1FCCFB8F1AACE19400E7366D /* Chat.swift in Sources */,
 				1FCCFB8B1AACDE1500E7366D /* Serializable.swift in Sources */,

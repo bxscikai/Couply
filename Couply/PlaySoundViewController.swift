@@ -1,33 +1,36 @@
-//
+
 //  PlaySoundViewController.swift
 //  Couply
 //
 //  Created by Minette Yu on 3/8/15.
 //  Copyright (c) 2015 MindVacationInc. All rights reserved.
-//
+
 
 import UIKit
 import AVFoundation
 
 class PlaySoundViewController: UIViewController {
     var audioPlayer:AVAudioPlayer!
-    
+    var receivedAudio:RecordedAudio!
     override func viewWillAppear(animated: Bool) {
         stopALLAudio.hidden=true
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if var filePath = NSBundle.mainBundle().URLForResource("movie_quote", withExtension: "mp3"){
-            audioPlayer = AVAudioPlayer(contentsOfURL: filePath, error: nil)
-            audioPlayer.enableRate=true
-            
-        }else{
-            println("This file path is empty")
-        }
-                // Do any additional setup after loading the view.
+//        if var filePath = NSBundle.mainBundle().URLForResource("movie_quote", withExtension: "mp3"){
+//            
+//            
+//        }else{
+//            println("This file path is empty")
+//        }
+        audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
+        audioPlayer.enableRate=true
+        
+        // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
