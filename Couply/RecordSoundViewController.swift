@@ -9,10 +9,6 @@
 import UIKit
 
 class RecordSoundViewController: UIViewController {
-
-    @IBAction func makeRequestPressed(sender: AnyObject) {
-        Server.getUser("Chenkai")
-    }
     
     @IBOutlet weak var recordingInProgress: UILabel!
    
@@ -49,6 +45,4 @@ class RecordSoundViewController: UIViewController {
         recordButton.enabled=true
         stopButton.enabled=false
     }
-  
-  
 }
