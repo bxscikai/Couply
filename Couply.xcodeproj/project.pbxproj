@@ -20,7 +20,7 @@
 		5F5748DA1AACCBDA00D16DB7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5748D91AACCBB700D16DB7 /* Alamofire.framework */; };
 		5F5748DB1AACCBDA00D16DB7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5748D91AACCBB700D16DB7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5F5748DF1AACD3FF00D16DB7 /* PlaySoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5748DE1AACD3FF00D16DB7 /* PlaySoundViewController.swift */; };
-		5F5748E11AACDF9F00D16DB7 /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F5748E01AACDF9F00D16DB7 /* movie_quote.mp3 */; };
+		5FB638C61AAE7B3C005A0A9B /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FB638C51AAE7B3C005A0A9B /* movie_quote.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,7 @@
 		5F3287E81AB7DBD6009C023B /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 		5F5748D41AACCBB700D16DB7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Libs/Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 		5F5748DE1AACD3FF00D16DB7 /* PlaySoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundViewController.swift; sourceTree = "<group>"; };
-		5F5748E01AACDF9F00D16DB7 /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = movie_quote.mp3; path = ../../Desktop/movie_quote.mp3; sourceTree = "<group>"; };
+		5FB638C51AAE7B3C005A0A9B /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +150,8 @@
 		1F0B1DFA1AA39AE400AC5E83 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FB638C51AAE7B3C005A0A9B /* movie_quote.mp3 */,
 				1F0B1DFB1AA39AE400AC5E83 /* Info.plist */,
-				5F5748E01AACDF9F00D16DB7 /* movie_quote.mp3 */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 			files = (
 				1F0B1E021AA39AE400AC5E83 /* Main.storyboard in Resources */,
 				1F0B1E071AA39AE400AC5E83 /* LaunchScreen.xib in Resources */,
-				5F5748E11AACDF9F00D16DB7 /* movie_quote.mp3 in Resources */,
+				5FB638C61AAE7B3C005A0A9B /* movie_quote.mp3 in Resources */,
 				1F0B1E041AA39AE400AC5E83 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
