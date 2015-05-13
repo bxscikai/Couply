@@ -29,6 +29,13 @@ struct Constants {
         static let GetChatsUrl = Constants.Server.BaseUrl + Constants.Server.Chats + "get/"
         static let PostChatsUrl = Constants.Server.BaseUrl + Constants.Server.Chats + "set/"
         
+        // Post constants
+        static let boundaryConstant = "---Boundary---"
+        static let contentType = "multipart/form-data; boundary=" + Constants.Server.boundaryConstant
+        static let mimeTypeAudio = "audio/mpeg"
+        static let audioFileName = "audioFile"
+        static let audioFileExtension = ".mp3"
+        
         // Query keys
         static let query_username = "username"
         static let query_partnerName = "partnerName"
@@ -37,6 +44,7 @@ struct Constants {
         static let query_receiverName = "receiverName"
         static let query_timestamp = "timestamp"
         static let query_emojiId = "emojiId"
+        static let query_chatType = "chatType"
     }
     
     struct Key {

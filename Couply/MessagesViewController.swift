@@ -76,10 +76,24 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             let usernameTextField = alertController.textFields![0] as! UITextField
             let username = usernameTextField.text
             Server.getUser(username, completion: { (user, error) -> Void in
+                
+                // If we failed to get user, something is wrong, bail
+                if (Cache.sharedInstance.user == nil) {
+                    
+                    let failedToFetchUserError = UIAlertController(title: "Failed to load user", message: "Failed to load user from Database, the backend is likely not responding", preferredStyle: .Alert)
+                    let cancelAction = UIAlertAction(title: "Okay", style: .Cancel) { (_) in }
+
+                    failedToFetchUserError.addAction(cancelAction)
+                    
+                    self.presentViewController(failedToFetchUserError, animated: true, completion: {})
+                    return;
+                }
+                
                 self.title = Cache.sharedInstance.user!.partnerName
                 self.fetchInitialData()
             })
         }
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
 
         // Add text field to alert
