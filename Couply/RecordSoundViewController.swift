@@ -9,7 +9,7 @@ import AVFoundation
 import UIKit
 
 
-class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
+class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     @IBOutlet weak var recordingInProgress: UILabel!
    
@@ -79,7 +79,8 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
             recordedAudio=RecordedAudio()
             recordedAudio.filePathUrl=recorder.url
             recordedAudio.title=recorder.url.lastPathComponent
-            self.performSegueWithIdentifier("stopRecording", sender:recordedAudio)
+            playSound()
+//            self.performSegueWithIdentifier("stopRecording", sender:recordedAudio)
         }else{
             
             println("Recording was not successful. Please try again.")
@@ -89,6 +90,14 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         
         
         
+    }
+    
+    func playSound() {
+
+        var audioPlayer = AVAudioPlayer(contentsOfURL: recordedAudio.filePathUrl, error: nil)
+        audioPlayer.delegate = self;
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

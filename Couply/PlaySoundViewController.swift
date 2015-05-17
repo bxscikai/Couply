@@ -26,7 +26,7 @@ class PlaySoundViewController: UIViewController {
 //        }
         audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
         audioPlayer.enableRate=true
-        
+
         // Do any additional setup after loading the view.
     }
 

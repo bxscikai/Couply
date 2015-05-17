@@ -38,6 +38,8 @@
 		1FBE64B81AC2571400059DF8 /* 16.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE64A61AC2571400059DF8 /* 16.png */; };
 		1FBE64B91AC2571400059DF8 /* 17.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE64A71AC2571400059DF8 /* 17.png */; };
 		1FBE64BA1AC2571400059DF8 /* Question-mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE64A81AC2571400059DF8 /* Question-mark.png */; };
+		1FBE64BC1AC261D800059DF8 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE64BB1AC261D800059DF8 /* 0.png */; };
+		1FBE64BE1AC262B700059DF8 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE64BD1AC262B700059DF8 /* AudioManager.swift */; };
 		1FCCFB8B1AACDE1500E7366D /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB8A1AACDE1500E7366D /* Serializable.swift */; };
 		1FCCFB8D1AACE0B300E7366D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB8C1AACE0B300E7366D /* User.swift */; };
 		1FCCFB8F1AACE19400E7366D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCFB8E1AACE19400E7366D /* Chat.swift */; };
@@ -130,6 +132,8 @@
 		1FBE64A61AC2571400059DF8 /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 16.png; sourceTree = "<group>"; };
 		1FBE64A71AC2571400059DF8 /* 17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 17.png; sourceTree = "<group>"; };
 		1FBE64A81AC2571400059DF8 /* Question-mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Question-mark.png"; sourceTree = "<group>"; };
+		1FBE64BB1AC261D800059DF8 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		1FBE64BD1AC262B700059DF8 /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		1FCCFB8A1AACDE1500E7366D /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		1FCCFB8C1AACE0B300E7366D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1FCCFB8E1AACE19400E7366D /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
@@ -186,11 +190,11 @@
 				1F0B1DFC1AA39AE400AC5E83 /* AppDelegate.swift */,
 				1FBE648C1AC24F6300059DF8 /* PlaySoundViewController.swift */,
 				1F0B1DFE1AA39AE400AC5E83 /* RecordSoundViewController.swift */,
-				5F3287E81AB7DBD6009C023B /* RecordedAudio.swift */,
 				1F0B1E1F1AA6C53900AC5E83 /* Server.swift */,
 				1F0B1E211AA6C6D500AC5E83 /* Constant.swift */,
 				1F0B1E3B1AA964E800AC5E83 /* Cache.swift */,
 				1FCCFB901AACF18200E7366D /* MessagesViewController.swift */,
+				1FBE64BD1AC262B700059DF8 /* AudioManager.swift */,
 				1F6E48441AAFDEA500011A75 /* EmojiManager.swift */,
 				1F0B1E001AA39AE400AC5E83 /* Main.storyboard */,
 				1F0B1E031AA39AE400AC5E83 /* Images.xcassets */,
@@ -260,6 +264,7 @@
 		1FA12EEF1AAE564300F2E563 /* stickers */ = {
 			isa = PBXGroup;
 			children = (
+				1FBE64BB1AC261D800059DF8 /* 0.png */,
 				1FBE64971AC2571400059DF8 /* 1.png */,
 				1FBE64981AC2571400059DF8 /* 2.png */,
 				1FBE64991AC2571400059DF8 /* 3.png */,
@@ -289,6 +294,7 @@
 				1FCCFB8C1AACE0B300E7366D /* User.swift */,
 				1FCCFB8E1AACE19400E7366D /* Chat.swift */,
 				1FCCFB921AACFA7600E7366D /* ResponseWrapper.swift */,
+				5F3287E81AB7DBD6009C023B /* RecordedAudio.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -345,9 +351,11 @@
 				TargetAttributes = {
 					1F0B1DF61AA39AE400AC5E83 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = H35XMELGG5;
 					};
 					1F0B1E0B1AA39AE400AC5E83 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = H35XMELGG5;
 						TestTargetID = 1F0B1DF61AA39AE400AC5E83;
 					};
 				};
@@ -392,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FBE64BC1AC261D800059DF8 /* 0.png in Resources */,
 				1FBE64B11AC2571400059DF8 /* 9.png in Resources */,
 				1FBE64AF1AC2571400059DF8 /* 7.png in Resources */,
 				1FBE64AE1AC2571400059DF8 /* 6.png in Resources */,
@@ -433,6 +442,7 @@
 				1F12E6E91AADE951002198F9 /* Extensions.swift in Sources */,
 				1FBE648D1AC24F6300059DF8 /* PlaySoundViewController.swift in Sources */,
 				1FCCFB931AACFA7600E7366D /* ResponseWrapper.swift in Sources */,
+				1FBE64BE1AC262B700059DF8 /* AudioManager.swift in Sources */,
 				1F55940F1AC24B63009E130F /* RecordSoundViewController.swift in Sources */,
 				1F0B1E3C1AA964E800AC5E83 /* Cache.swift in Sources */,
 				1F6E48451AAFDEA500011A75 /* EmojiManager.swift in Sources */,
@@ -518,9 +528,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "d76d413c-b490-4e1a-b80d-4f21708829dc";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -557,8 +568,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "d76d413c-b490-4e1a-b80d-4f21708829dc";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -570,11 +582,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Couply/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -583,11 +598,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Couply/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -595,6 +613,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -606,6 +626,7 @@
 				INFOPLIST_FILE = CouplyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Couply.app/Couply";
 			};
 			name = Debug;
@@ -614,6 +635,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -621,6 +644,7 @@
 				INFOPLIST_FILE = CouplyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Couply.app/Couply";
 			};
 			name = Release;

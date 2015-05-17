@@ -11,6 +11,8 @@ import Foundation
 struct Constants {
     
     static var appDomain = "Couply"
+    static let numberOfEmojis = 17
+    static let recordIconIndex = 0
     
     // Server related constant
     struct Server {
@@ -45,6 +47,7 @@ struct Constants {
     
     struct Notification {
         static let pushnotification_key = "pushnotificationKey"
+        static let audioFinishedRecording_key = "audioFinishedRecording"
     }
     
     struct error {
@@ -60,4 +63,5 @@ struct Constants {
         static let chatCellIdentifier = "chatCell"
         static let emojiCollectionCellIdentifier = "emojiCollectionCell"
     }
+    
 }

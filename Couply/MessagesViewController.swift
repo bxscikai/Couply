@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 // MARK: Custom chat cell
 class ChatCell : UITableViewCell {
@@ -28,6 +29,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         // Register for notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedRemoteNotfication:", name:Constants.Notification.pushnotification_key, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioRecordingComplete:", name:Constants.Notification.audioFinishedRecording_key, object: nil)
+        
         fetchUserIfRequired()
         fetchInitialData()
         setUpUI()
@@ -111,6 +114,13 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func audioRecordingComplete(notification: NSNotification){
+        if (notification.object != nil) {
+            var audio : RecordedAudio = notification.object as! RecordedAudio
+            AudioManager.sharedInstance.playSound(audio.filePathUrl)
+        }
+    }
+    
 // MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -139,15 +149,15 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.UIIdentifiers.emojiCollectionCellIdentifier, forIndexPath: indexPath) as! ChatEmojiCollection
-        cell.emojiButton.tag = indexPath.row + 1
-        cell.emojiButton.setImage(EmojiManager.getEmojiImageWithId(indexPath.row+1), forState: UIControlState.Normal)
+        cell.emojiButton.tag = indexPath.row
+        cell.emojiButton.setImage(EmojiManager.getEmojiImageWithId(indexPath.row), forState: UIControlState.Normal)
         cell.emojiButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return EmojiManager.numberOfEmojis
+            return Constants.numberOfEmojis
     }
     
     // Emoji Pressed
@@ -155,7 +165,32 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     {
         var button : UIButton = sender as! UIButton
         println("Pressed emoji up: \(button.tag)")
+        
+        // If this button is to record audio
+        if (button.tag == Constants.recordIconIndex)
+        {
+            // Record is not recording, or stop if already recording
+            if (AudioManager.sharedInstance.audioRecorder != nil && AudioManager.sharedInstance.audioRecorder.recording)
+            {
+                AudioManager.sharedInstance.stopRecording()
+                button.layer.removeAllAnimations()
+            }
+            else
+            {
+                AudioManager.sharedInstance.startRecording()
+                // Add fade in out animation
+                var fadeAnimation = CABasicAnimation(keyPath: "opacity")
+                fadeAnimation.fromValue = 0.0
+                fadeAnimation.toValue = 1.0
+                fadeAnimation.duration = 1.5
+                fadeAnimation.autoreverses = true
+                fadeAnimation.repeatCount = Float.infinity
+                button.layer.addAnimation(fadeAnimation, forKey: "opacity")
+            }
+            return
+        }
         var chat : Chat = Chat.init(emojiIdSending:button.tag)
+        
         Server.sendChat(chat, completion: { (error) -> Void in
             if (error != nil) {
                 println("Error when sending chat: \(error)")
