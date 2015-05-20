@@ -18,6 +18,8 @@ class ChatCell : UITableViewCell {
 
 class ChatEmojiCollection : UICollectionViewCell {
     
+    @IBOutlet weak var buttonWidth: NSLayoutConstraint!
+    @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     @IBOutlet weak var emojiButton: UIButton!
 }
 
@@ -132,6 +134,13 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         if (notification.object != nil) {
             var audio : RecordedAudio = notification.object as! RecordedAudio
             AudioManager.sharedInstance.playSound(audio.filePathUrl)
+            
+            // Send audio to server
+            var chat : Chat = Chat(audioFileSending: audio.filePathUrl!)
+            Server.sendChat(chat, completion: { (error) -> Void in
+                println("Error when sending audio chat: \(error)")
+            })
+            
         }
     }
     
@@ -165,7 +174,17 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.UIIdentifiers.emojiCollectionCellIdentifier, forIndexPath: indexPath) as! ChatEmojiCollection
         cell.emojiButton.tag = indexPath.row
         cell.emojiButton.setImage(EmojiManager.getEmojiImageWithId(indexPath.row), forState: UIControlState.Normal)
-        cell.emojiButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        // Set image size on collection view
+        if (indexPath.row == Constants.recordIconIndex)
+        {
+            cell.buttonHeight.constant = 50;
+            cell.buttonWidth.constant = 50;
+        }
+        else
+        {
+            cell.emojiButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
+        }
         
         return cell
     }
@@ -203,19 +222,24 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             }
             return
         }
-        var chat : Chat = Chat.init(emojiIdSending:button.tag)
         
-        Server.sendChat(chat, completion: { (error) -> Void in
-            if (error != nil) {
-                println("Error when sending chat: \(error)")
-            }
-            else
-            {
-                Cache.sharedInstance.addChat(chat)
-                self.messagesTable.reloadData()
-                self.scrollToBottom()
-            }
+        // Else this is a regular emoji button
+        else
+        {
+            var chat : Chat = Chat.init(emojiIdSending:button.tag)
             
-            })
+            Server.sendChat(chat, completion: { (error) -> Void in
+                if (error != nil) {
+                    println("Error when sending chat: \(error)")
+                }
+                else
+                {
+                    Cache.sharedInstance.addChat(chat)
+                    self.messagesTable.reloadData()
+                    self.scrollToBottom()
+                }
+                
+                })
+        }
     }
 }

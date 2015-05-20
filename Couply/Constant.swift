@@ -18,7 +18,8 @@ struct Constants {
     struct Server {
         
         // URLs
-//        static let BaseUrl = "http://localhost:3000/"
+        static let LOCAL_DEBUGGING = true
+        static let LocalBaseUrl = "http://localhost:3000/"
         static var BaseUrl = "http://6587801d.ngrok.com/"
         static let dynamicIPUrl = "http://minetteyu.com/files/couplyIP.txt"
 
@@ -33,10 +34,10 @@ struct Constants {
         
         // Post constants
         static let boundaryConstant = "---Boundary---"
-        static let contentType = "multipart/form-data; boundary=" + Constants.Server.boundaryConstant
-        static let mimeTypeAudio = "audio/mpeg"
+        static let contentType = "multipart/form-data;boundary=" + Constants.Server.boundaryConstant
+        static let mimeTypeAudio = "audio/vnd.wave"
         static let audioFileName = "audioFile"
-        static let audioFileExtension = ".mp3"
+        static let audioFileExtension = ".wav"
         
         // Query keys
         static let query_username = "username"

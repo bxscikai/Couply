@@ -23,7 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(setting);
         UIApplication.sharedApplication().registerForRemoteNotifications();
         
-        getServerBaseIP()
+        // Set API url based on whether we are locally debugging
+        if (Constants.Server.LOCAL_DEBUGGING)
+        {
+            Constants.Server.BaseUrl = Constants.Server.LocalBaseUrl
+        }
+        else
+        {
+            getServerBaseIP()
+        }
         
         return true
     }

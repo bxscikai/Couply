@@ -178,6 +178,8 @@
                                             <constraint firstAttribute="centerY" secondItem="Zdx-ze-cc9" secondAttribute="centerY" id="lNO-Xr-fWa"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="buttonHeight" destination="OzJ-wJ-096" id="A74-dv-gCD"/>
+                                            <outlet property="buttonWidth" destination="ph4-u5-xOl" id="Hxw-lp-c2X"/>
                                             <outlet property="emojiButton" destination="Zdx-ze-cc9" id="roZ-dh-xDB"/>
                                         </connections>
                                     </collectionViewCell>

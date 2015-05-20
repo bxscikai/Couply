@@ -95,7 +95,10 @@ class Server: NSObject {
             
             case ChatType.ChatTypeAudio:
             
-                let urlRequest = Server.urlRequestWithComponents(Constants.Server.PostChatsUrl, parameters: queryParameters, data: NSData(contentsOfFile: chat.filePath as String)!)
+                // Get audio data
+                var audioData : NSData = NSData(contentsOfURL: chat.filePath)!
+                
+                let urlRequest = Server.urlRequestWithComponents(Constants.Server.PostChatsUrl, parameters: queryParameters, data: audioData)
 
                 Alamofire.upload(urlRequest.0, urlRequest.1)
                     .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
@@ -160,20 +163,20 @@ class Server: NSObject {
         let uploadData = NSMutableData()
         
         // add image
-        uploadData.appendData("\r\n--\(boundaryConstant)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-        uploadData.appendData("Content-Disposition: form-data; name=\"\(Constants.Server.audioFileName)\"; filename=\"\(Constants.Server.audioFileName)\(Constants.Server.audioFileExtension)\"\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        uploadData.appendData("\r\n\(boundaryConstant)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        uploadData.appendData("Content-Disposition: form-data; name=\"file\"; filename=\"\(Constants.Server.audioFileName)\(Constants.Server.audioFileExtension)\"\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         uploadData.appendData("Content-Type: \(Constants.Server.mimeTypeAudio)\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         uploadData.appendData(data)
         
         // add parameters
         for (key, value) in parameters {
-            uploadData.appendData("\r\n--\(boundaryConstant)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            uploadData.appendData("\r\n\(boundaryConstant)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
             uploadData.appendData("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n\(value)".dataUsingEncoding(NSUTF8StringEncoding)!)
         }
-        uploadData.appendData("\r\n--\(boundaryConstant)--\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        uploadData.appendData("\r\n\(boundaryConstant)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         
         // return URLRequestConvertible and NSData
-        return (Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: nil).0, uploadData)
+        return (Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameters).0, uploadData)
     }
     
 }

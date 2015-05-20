@@ -13,7 +13,7 @@ class Chat: Serializable {
     var senderName : NSString = ""
     var receiverName : NSString = ""
     var chatType : ChatType = ChatType.ChatTypeUnknown
-    var filePath : NSString = ""
+    var filePath : NSURL = NSURL()
     var emojiId : NSNumber = 0
     var timestamp : NSNumber = 0
     
@@ -26,7 +26,7 @@ class Chat: Serializable {
         self.timestamp = NSDate().timeIntervalSince1970
     }
     
-    convenience init(audioFileSending : NSString) {
+    convenience init(audioFileSending : NSURL) {
         self.init()
         self.receiverName = Cache.sharedInstance.user!.partnerName
         self.senderName = Cache.sharedInstance.user!.username
