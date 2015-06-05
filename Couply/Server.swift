@@ -94,22 +94,11 @@ class Server: NSObject {
                 break;
             
             case ChatType.ChatTypeAudio:
-            
-                // Get audio data
-                var audioData : NSData = NSData(contentsOfURL: chat.filePath)!
                 
-                let urlRequest = Server.urlRequestWithComponents(Constants.Server.PostChatsUrl, parameters: queryParameters, data: audioData)
-
-                Alamofire.upload(urlRequest.0, urlRequest.1)
-                    .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
-                        println("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
-                    }
-                    .responseJSON { (request, response, JSON, error) in
-                        println("REQUEST \(request)")
-                        println("RESPONSE \(response)")
-                        println("JSON \(JSON)")
-                        println("ERROR \(error)")
-                }
+                var mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: Constants.Server.PostChatsUrl)!)
+                var request = Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: queryParameters)
+                
+                Alamofire.upload(Method.POST, request.0, chat.filePath)
                 
                 break;
 

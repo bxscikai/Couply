@@ -174,17 +174,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.UIIdentifiers.emojiCollectionCellIdentifier, forIndexPath: indexPath) as! ChatEmojiCollection
         cell.emojiButton.tag = indexPath.row
         cell.emojiButton.setImage(EmojiManager.getEmojiImageWithId(indexPath.row), forState: UIControlState.Normal)
-        
-        // Set image size on collection view
-        if (indexPath.row == Constants.recordIconIndex)
-        {
-            cell.buttonHeight.constant = 50;
-            cell.buttonWidth.constant = 50;
-        }
-        else
-        {
-            cell.emojiButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
-        }
+        cell.emojiButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
         
         return cell
     }

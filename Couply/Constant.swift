@@ -33,7 +33,7 @@ struct Constants {
         static let PostChatsUrl = Constants.Server.BaseUrl + Constants.Server.Chats + "set/"
         
         // Post constants
-        static let boundaryConstant = "---Boundary---"
+        static let boundaryConstant = "---Boundary4923874---"
         static let contentType = "multipart/form-data;boundary=" + Constants.Server.boundaryConstant
         static let mimeTypeAudio = "audio/vnd.wave"
         static let audioFileName = "audioFile"

@@ -18,12 +18,7 @@ class PlaySoundViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if var filePath = NSBundle.mainBundle().URLForResource("movie_quote", withExtension: "mp3"){
-//            
-//            
-//        }else{
-//            println("This file path is empty")
-//        }
+
         audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
         audioPlayer.enableRate=true
 
