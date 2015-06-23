@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class Chat: Serializable {
     
@@ -41,6 +42,31 @@ class Chat: Serializable {
         self.receiverName = Cache.sharedInstance.user!.username
         self.senderName = Cache.sharedInstance.user!.partnerName
         self.timestamp = NSDate().timeIntervalSince1970
+    }
+    
+    func downloadAudioIfRequired() -> Void
+    {
+        // This is an audio emoji
+        if (self.emojiId == Constants.audioEmojiId)
+        {
+            var fileDownloadUrl : String = Constants.Server.BaseUrl + String(_cocoaString: self.timestamp)
+            let destination = Alamofire.Request.suggestedDownloadDestination(directory: .DocumentDirectory, domain: .UserDomainMask)
+            
+            Alamofire.download(Method.GET, fileDownloadUrl, { (temporaryURL, response) -> (NSURL) in
+                
+                //                if let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as? NSURL {
+                //                    fileName = response.suggestedFilename!
+                //                    finalPath = directoryURL.URLByAppendingPathComponent(fileName!)
+                //                    return finalPath!
+                //                }
+                self.filePath = temporaryURL
+                
+                return temporaryURL
+                
+            }).response { (_, _, data, err) -> Void in
+                
+            }
+        }
     }
     
     static func sortChats(chats : NSArray) -> NSArray

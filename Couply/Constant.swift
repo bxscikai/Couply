@@ -12,7 +12,7 @@ struct Constants {
     
     static var appDomain = "Couply"
     static let numberOfEmojis = 17
-    static let recordIconIndex = 0
+    static let audioEmojiId = 0
     
     // Server related constant
     struct Server {

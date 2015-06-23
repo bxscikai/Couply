@@ -12,8 +12,8 @@ import AVFoundation
 // MARK: Custom chat cell
 class ChatCell : UITableViewCell {
     
-    @IBOutlet weak var partnerEmoji: UIImageView!
-    @IBOutlet weak var userEmoji: UIImageView!
+    @IBOutlet weak var partnerEmoji: UIButton!
+    @IBOutlet weak var userEmoji: UIButton!
 }
 
 class ChatEmojiCollection : UICollectionViewCell {
@@ -133,12 +133,19 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func audioRecordingComplete(notification: NSNotification){
         if (notification.object != nil) {
             var audio : RecordedAudio = notification.object as! RecordedAudio
-            AudioManager.sharedInstance.playSound(audio.filePathUrl)
+
+//            AudioManager.sharedInstance.playSound(audio.filePathUrl)
             
             // Send audio to server
             var chat : Chat = Chat(audioFileSending: audio.filePathUrl!)
             Server.sendChat(chat, completion: { (error) -> Void in
-                println("Error when sending audio chat: \(error)")
+
+                if (error != nil) {
+                    println("Error when sending audio chat: \(error)")
+                }
+                Cache.sharedInstance.addChat(chat)
+                self.messagesTable.reloadData()
+                self.scrollToBottom()
             })
             
         }
@@ -155,14 +162,32 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = self.messagesTable.dequeueReusableCellWithIdentifier(Constants.UIIdentifiers.chatCellIdentifier, forIndexPath: indexPath) as! ChatCell
         var chat : Chat = Cache.sharedInstance.chats[indexPath.row] as! Chat
         var emoji : UIImage = EmojiManager.getEmojiImageWithId(chat.emojiId.integerValue)!
+
+        cell.userEmoji.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
+        cell.partnerEmoji.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
         
-        if (chat.senderName == Cache.sharedInstance.user!.username) {
-            cell.userEmoji.image = emoji
-            cell.partnerEmoji.image = nil
+        // Set emoji image
+        if (chat.senderName == Cache.sharedInstance.user!.username)
+        {
+            cell.userEmoji.setImage(emoji, forState: UIControlState.Normal)
+            cell.partnerEmoji.setImage(nil, forState: UIControlState.Normal)
         }
-        else {
-            cell.partnerEmoji.image = emoji
-            cell.userEmoji.image = nil
+        else
+        {
+            cell.partnerEmoji.setImage(emoji, forState: UIControlState.Normal)
+            cell.userEmoji.setImage(nil, forState: UIControlState.Normal)
+        }
+        
+        // Set buttons as enabled when emoji is audio
+        if (chat.emojiId == Constants.audioEmojiId)
+        {
+            cell.partnerEmoji.userInteractionEnabled = true
+            cell.userEmoji.userInteractionEnabled = true
+        }
+        else
+        {
+            cell.partnerEmoji.userInteractionEnabled = false
+            cell.userEmoji.userInteractionEnabled = false
         }
 
         return cell
@@ -175,6 +200,12 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         cell.emojiButton.tag = indexPath.row
         cell.emojiButton.setImage(EmojiManager.getEmojiImageWithId(indexPath.row), forState: UIControlState.Normal)
         cell.emojiButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        // If we have the record icon, half its size
+        if (indexPath.row == Constants.audioEmojiId)
+        {
+            cell.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+        }
         
         return cell
     }
@@ -190,7 +221,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         println("Pressed emoji up: \(button.tag)")
         
         // If this button is to record audio
-        if (button.tag == Constants.recordIconIndex)
+        if (button.tag == Constants.audioEmojiId)
         {
             // Record is not recording, or stop if already recording
             if (AudioManager.sharedInstance.audioRecorder != nil && AudioManager.sharedInstance.audioRecorder.recording)
@@ -232,4 +263,18 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
                 })
         }
     }
+    
+    @IBAction func chatPressed(sender: AnyObject)
+    {
+        var button : UIButton = sender as! UIButton
+        var buttonPosition : CGPoint = button.convertPoint(CGPointZero, fromView: self.messagesTable)
+        var buttonPositionPos : CGPoint = CGPointMake(abs(buttonPosition.x), abs(buttonPosition.y))
+        var indexPath : NSIndexPath? = messagesTable.indexPathForRowAtPoint(buttonPositionPos)
+        var chat : Chat = Cache.sharedInstance.chats[indexPath!.row] as! Chat
+        if (chat.emojiId == Constants.audioEmojiId)
+        {
+            AudioManager.sharedInstance.playSound(chat.filePath)
+        }
+    }
+    
 }

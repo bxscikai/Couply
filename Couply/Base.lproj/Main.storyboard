@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vmM-Mf-9hU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vmM-Mf-9hU">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -97,35 +97,47 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XIF-cs-w2m" id="7kW-jz-eLp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ZW-BU-Srv">
-                                                    <rect key="frame" x="23" y="10" width="100" height="100"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9P-Ti-kMO">
+                                                    <rect key="frame" x="19" y="8" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="MaE-ZU-wG5"/>
-                                                        <constraint firstAttribute="height" constant="100" id="Y8G-KL-zmG"/>
-                                                        <constraint firstAttribute="width" secondItem="4ZW-BU-Srv" secondAttribute="height" multiplier="1:1" id="z0R-l4-3gt"/>
+                                                        <constraint firstAttribute="height" constant="100" id="EL1-ef-uhx"/>
+                                                        <constraint firstAttribute="width" constant="100" id="ifV-4A-w8G"/>
+                                                        <constraint firstAttribute="width" secondItem="n9P-Ti-kMO" secondAttribute="height" multiplier="1:1" id="l2n-hz-ePr"/>
                                                     </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DX9-qO-lFN">
-                                                    <rect key="frame" x="477" y="8" width="100" height="100"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="chatPressed:" destination="k5e-1n-jaj" eventType="touchUpInside" id="mx7-vU-sYd"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD7-uo-RRs">
+                                                    <rect key="frame" x="481" y="8" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="DX9-qO-lFN" secondAttribute="height" multiplier="1:1" id="ZCO-fw-vV4"/>
-                                                        <constraint firstAttribute="width" constant="100" id="eQO-zQ-Zfq"/>
-                                                        <constraint firstAttribute="height" constant="100" id="x6A-Ea-XDT"/>
+                                                        <constraint firstAttribute="width" secondItem="iD7-uo-RRs" secondAttribute="height" multiplier="1:1" id="VLG-qD-cW6"/>
+                                                        <constraint firstAttribute="width" constant="100" id="pKM-Ge-pw4"/>
+                                                        <constraint firstAttribute="height" constant="100" id="tHo-qi-4Wt"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="chatPressed:" destination="k5e-1n-jaj" eventType="touchUpInside" id="I8z-yC-4vo"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="DX9-qO-lFN" secondAttribute="trailing" constant="15" id="8du-yX-EbN"/>
-                                                <constraint firstAttribute="centerY" secondItem="DX9-qO-lFN" secondAttribute="centerY" constant="2" id="Hcu-z0-Zac"/>
-                                                <constraint firstItem="4ZW-BU-Srv" firstAttribute="leading" secondItem="7kW-jz-eLp" secondAttribute="leadingMargin" constant="15" id="aln-Xt-Zdk"/>
-                                                <constraint firstAttribute="centerY" secondItem="4ZW-BU-Srv" secondAttribute="centerY" id="hBk-Ip-3bc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="iD7-uo-RRs" secondAttribute="trailing" constant="11" id="2L0-i4-UpD"/>
+                                                <constraint firstItem="n9P-Ti-kMO" firstAttribute="leading" secondItem="7kW-jz-eLp" secondAttribute="leadingMargin" constant="11" id="9bQ-d4-2Ta"/>
+                                                <constraint firstAttribute="centerY" secondItem="iD7-uo-RRs" secondAttribute="centerY" constant="2" id="eBf-QM-Orm"/>
+                                                <constraint firstAttribute="centerY" secondItem="n9P-Ti-kMO" secondAttribute="centerY" constant="2" id="nFI-06-jWL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="partnerEmoji" destination="4ZW-BU-Srv" id="eBz-Gi-Vu7"/>
-                                            <outlet property="userEmoji" destination="DX9-qO-lFN" id="A2x-wT-03u"/>
+                                            <outlet property="partnerEmoji" destination="n9P-Ti-kMO" id="RQZ-nu-OHY"/>
+                                            <outlet property="userEmoji" destination="iD7-uo-RRs" id="pX8-GF-UCd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

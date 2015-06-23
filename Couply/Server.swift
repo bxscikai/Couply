@@ -60,7 +60,9 @@ class Server: NSObject {
                 for chatObj in chatsDictArray
                 {
                     if let chat = chatObj as? NSDictionary {
-                        chats.addObject(Chat(JSONDict: chat))
+                        var newChat = Chat(JSONDict: chat)
+                        newChat.downloadAudioIfRequired()
+                        chats.addObject(newChat)
                     }
                 }
             
