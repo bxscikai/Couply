@@ -29,7 +29,6 @@ class Server: NSObject {
                     
                     // Returning response
                     var resultUser : User = User(JSONDict: response!.content as! NSDictionary)
-                    Cache.sharedInstance.user = resultUser
                     completion(user: resultUser, error: nil)
                     return
         }
@@ -61,7 +60,7 @@ class Server: NSObject {
                 {
                     if let chat = chatObj as? NSDictionary {
                         var newChat = Chat(JSONDict: chat)
-                        newChat.downloadAudioIfRequired()
+//                        newChat.downloadAudioIfRequired()
                         chats.addObject(newChat)
                     }
                 }
@@ -100,8 +99,10 @@ class Server: NSObject {
                 var mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: Constants.Server.PostChatsUrl)!)
                 var request = Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: queryParameters)
                 
-                Alamofire.upload(Method.POST, request.0, chat.filePath)
-                
+                Alamofire.upload(Method.POST, request.0, chat.filePath).responseJSON(options: NSJSONReadingOptions.AllowFragments, completionHandler: { (_, _, _, error) -> Void in
+                    completion(error: error)
+                })
+
                 break;
 
             default:

@@ -63,9 +63,14 @@ class AudioManager : NSObject, AVAudioRecorderDelegate {
     }
     
     func playSound(soundPath : NSURL) {
-        audioPlayer = AVAudioPlayer(contentsOfURL: soundPath, error: nil)
-        audioPlayer.stop()
-        audioPlayer.play()
+        var error : NSError?
+        var data : NSData? = NSData(contentsOfURL: soundPath)
+
+        audioPlayer = AVAudioPlayer(contentsOfURL: soundPath, error: &error)
+        if (error == nil){
+            audioPlayer.stop()
+            audioPlayer.play()
+        }
     }
         
 }

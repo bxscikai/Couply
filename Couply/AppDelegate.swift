@@ -57,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        self.clearFilesDirectory()
     }
     
     // Push notification handling
@@ -93,6 +94,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let newIP = NSString(data: serverData!, encoding: UInt())
             Constants.Server.BaseUrl = newIP as! String
             println("Using fetched IP: \(newIP)")
+        }
+    }
+    
+    func clearFilesDirectory()
+    {
+        let paths : NSArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        if (paths.count > 0)
+        {
+            var error : NSError?
+            var deleted : Bool = NSFileManager.defaultManager().removeItemAtPath(paths.objectAtIndex(0) as! String, error: &error)
+            if (!deleted || error != nil)
+            {
+                println("Failed to delete /files directory")
+            }
+            else
+            {
+                NSFileManager.defaultManager().createDirectoryAtPath(paths.objectAtIndex(0) as! String, withIntermediateDirectories: false, attributes: nil, error: &error)
+            }
         }
     }
 }

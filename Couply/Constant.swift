@@ -70,7 +70,11 @@ struct Constants {
     
     struct UIIdentifiers {
         static let chatCellIdentifier = "chatCell"
+        static let chatHeaderNoPartnerCell = "noPartnerHeaderCell"
         static let emojiCollectionCellIdentifier = "emojiCollectionCell"
     }
-    
+
+    struct path {
+        static let audioFilePath = "files"
+    }
 }

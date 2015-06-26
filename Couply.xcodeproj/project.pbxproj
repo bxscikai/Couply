@@ -16,11 +16,9 @@
 		1F0B1E221AA6C6D500AC5E83 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0B1E211AA6C6D500AC5E83 /* Constant.swift */; };
 		1F0B1E3C1AA964E800AC5E83 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0B1E3B1AA964E800AC5E83 /* Cache.swift */; };
 		1F12E6E91AADE951002198F9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F12E6E81AADE951002198F9 /* Extensions.swift */; };
-		1F55940F1AC24B63009E130F /* RecordSoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0B1DFE1AA39AE400AC5E83 /* RecordSoundViewController.swift */; };
 		1F6E48451AAFDEA500011A75 /* EmojiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E48441AAFDEA500011A75 /* EmojiManager.swift */; };
 		1F8A75BD1AACCCC800D50D5B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8A75BC1AACCCBE00D50D5B /* Alamofire.framework */; };
 		1F8A75BE1AACCCC800D50D5B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8A75BC1AACCCBE00D50D5B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1FBE648D1AC24F6300059DF8 /* PlaySoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE648C1AC24F6300059DF8 /* PlaySoundViewController.swift */; };
 		1FBE64A91AC2571400059DF8 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE64971AC2571400059DF8 /* 1.png */; };
 		1FBE64AA1AC2571400059DF8 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE64981AC2571400059DF8 /* 2.png */; };
 		1FBE64AB1AC2571400059DF8 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE64991AC2571400059DF8 /* 3.png */; };
@@ -103,7 +101,6 @@
 		1F0B1DF71AA39AE400AC5E83 /* Couply.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Couply.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F0B1DFB1AA39AE400AC5E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F0B1DFC1AA39AE400AC5E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F0B1DFE1AA39AE400AC5E83 /* RecordSoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSoundViewController.swift; sourceTree = "<group>"; };
 		1F0B1E011AA39AE400AC5E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F0B1E031AA39AE400AC5E83 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F0B1E0C1AA39AE400AC5E83 /* CouplyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CouplyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +112,6 @@
 		1F12E6E81AADE951002198F9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1F6E48441AAFDEA500011A75 /* EmojiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiManager.swift; sourceTree = "<group>"; };
 		1F8A75B71AACCCBE00D50D5B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Libs/Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
-		1FBE648C1AC24F6300059DF8 /* PlaySoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundViewController.swift; sourceTree = "<group>"; };
 		1FBE64971AC2571400059DF8 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		1FBE64981AC2571400059DF8 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		1FBE64991AC2571400059DF8 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -190,8 +186,6 @@
 				1FCCFB891AACDDAD00E7366D /* Model */,
 				1F8A75B61AACCCA900D50D5B /* Lib */,
 				1F0B1DFC1AA39AE400AC5E83 /* AppDelegate.swift */,
-				1FBE648C1AC24F6300059DF8 /* PlaySoundViewController.swift */,
-				1F0B1DFE1AA39AE400AC5E83 /* RecordSoundViewController.swift */,
 				1F0B1E1F1AA6C53900AC5E83 /* Server.swift */,
 				1F0B1E211AA6C6D500AC5E83 /* Constant.swift */,
 				1F0B1E3B1AA964E800AC5E83 /* Cache.swift */,
@@ -443,10 +437,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F12E6E91AADE951002198F9 /* Extensions.swift in Sources */,
-				1FBE648D1AC24F6300059DF8 /* PlaySoundViewController.swift in Sources */,
 				1FCCFB931AACFA7600E7366D /* ResponseWrapper.swift in Sources */,
 				1FBE64BE1AC262B700059DF8 /* AudioManager.swift in Sources */,
-				1F55940F1AC24B63009E130F /* RecordSoundViewController.swift in Sources */,
 				1F0B1E3C1AA964E800AC5E83 /* Cache.swift in Sources */,
 				1F6E48451AAFDEA500011A75 /* EmojiManager.swift in Sources */,
 				1F0B1E201AA6C53900AC5E83 /* Server.swift in Sources */,

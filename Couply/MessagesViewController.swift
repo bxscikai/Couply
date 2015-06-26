@@ -16,6 +16,13 @@ class ChatCell : UITableViewCell {
     @IBOutlet weak var userEmoji: UIButton!
 }
 
+class NoPartnerHeaderCell : UITableViewCell
+{
+    @IBOutlet weak var noPartnerTextField : UITextField!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+}
+
 class ChatEmojiCollection : UICollectionViewCell {
     
     @IBOutlet weak var buttonWidth: NSLayoutConstraint!
@@ -83,7 +90,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             Server.getUser(username, completion: { (user, error) -> Void in
                 
                 // If we failed to get user, something is wrong, bail
-                if (Cache.sharedInstance.user == nil) {
+                if (user == nil) {
                     
                     let failedToFetchUserError = UIAlertController(title: "Failed to load user", message: "Failed to load user from Database, the backend is likely not responding", preferredStyle: .Alert)
                     let cancelAction = UIAlertAction(title: "Okay", style: .Cancel) { (_) in }
@@ -94,6 +101,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
                     return;
                 }
                 
+                Cache.sharedInstance.user = user
                 self.title = Cache.sharedInstance.user!.partnerName
                 self.fetchInitialData()
             })
@@ -116,25 +124,27 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func fetchInitialData() {
         Server.fetchInitialData { (error) -> Void in
-            self.messagesTable.reloadData()
-            self.scrollToBottom()
+            self.reloadTable()
         }
+    }
+    
+    func reloadTable()
+    {
+        self.messagesTable.reloadData()
+        self.scrollToBottom()
     }
     
     func receivedRemoteNotfication(notification: NSNotification){
         if (notification.object != nil) {
             var chat : Chat = notification.object as! Chat
             Cache.sharedInstance.addChat(chat)
-            self.messagesTable.reloadData()
-            self.scrollToBottom()
+            self.reloadTable()
         }
     }
     
     func audioRecordingComplete(notification: NSNotification){
         if (notification.object != nil) {
             var audio : RecordedAudio = notification.object as! RecordedAudio
-
-//            AudioManager.sharedInstance.playSound(audio.filePathUrl)
             
             // Send audio to server
             var chat : Chat = Chat(audioFileSending: audio.filePathUrl!)
@@ -144,8 +154,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
                     println("Error when sending audio chat: \(error)")
                 }
                 Cache.sharedInstance.addChat(chat)
-                self.messagesTable.reloadData()
-                self.scrollToBottom()
+                self.reloadTable()
             })
             
         }
@@ -191,6 +200,24 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         return cell
+    }
+    
+// MARK: UITableViewDelegate - header
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if (Cache.sharedInstance.user != nil || Cache.sharedInstance.user?.partnerName == nil)
+        {
+            return 150.0;
+        }
+        return 0;
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if (Cache.sharedInstance.user != nil || Cache.sharedInstance.user?.partnerName == nil)
+        {
+            let headerView = self.messagesTable.dequeueReusableCellWithIdentifier(Constants.UIIdentifiers.chatHeaderNoPartnerCell) as! UITableViewCell
+            return headerView
+        }
+        return nil
     }
     
 // MARK: UICollectionViewDelegate
@@ -256,8 +283,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
                 else
                 {
                     Cache.sharedInstance.addChat(chat)
-                    self.messagesTable.reloadData()
-                    self.scrollToBottom()
+                    self.reloadTable()
                 }
                 
                 })
@@ -277,4 +303,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    @IBAction func savePartnerPressed(sender: AnyObject) {
+        
+//        Server.getUser(username, completion: { (user, error) -> Void in
+//            
+//        })
+    }
 }
