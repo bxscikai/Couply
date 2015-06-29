@@ -19,6 +19,7 @@
 		1F6E48451AAFDEA500011A75 /* EmojiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E48441AAFDEA500011A75 /* EmojiManager.swift */; };
 		1F8A75BD1AACCCC800D50D5B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8A75BC1AACCCBE00D50D5B /* Alamofire.framework */; };
 		1F8A75BE1AACCCC800D50D5B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8A75BC1AACCCBE00D50D5B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1FA467A71B40AB150072047A /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA467A61B40AB150072047A /* Categories.swift */; };
 		1FBE64A91AC2571400059DF8 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE64971AC2571400059DF8 /* 1.png */; };
 		1FBE64AA1AC2571400059DF8 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE64981AC2571400059DF8 /* 2.png */; };
 		1FBE64AB1AC2571400059DF8 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE64991AC2571400059DF8 /* 3.png */; };
@@ -112,6 +113,7 @@
 		1F12E6E81AADE951002198F9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1F6E48441AAFDEA500011A75 /* EmojiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiManager.swift; sourceTree = "<group>"; };
 		1F8A75B71AACCCBE00D50D5B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Libs/Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
+		1FA467A61B40AB150072047A /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		1FBE64971AC2571400059DF8 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		1FBE64981AC2571400059DF8 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		1FBE64991AC2571400059DF8 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				1F0B1E001AA39AE400AC5E83 /* Main.storyboard */,
 				1F0B1E031AA39AE400AC5E83 /* Images.xcassets */,
 				1F0B1DFA1AA39AE400AC5E83 /* Supporting Files */,
+				1FA467A61B40AB150072047A /* Categories.swift */,
 			);
 			path = Couply;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 			files = (
 				1F12E6E91AADE951002198F9 /* Extensions.swift in Sources */,
 				1FCCFB931AACFA7600E7366D /* ResponseWrapper.swift in Sources */,
+				1FA467A71B40AB150072047A /* Categories.swift in Sources */,
 				1FBE64BE1AC262B700059DF8 /* AudioManager.swift in Sources */,
 				1F0B1E3C1AA964E800AC5E83 /* Cache.swift in Sources */,
 				1F6E48451AAFDEA500011A75 /* EmojiManager.swift in Sources */,
@@ -582,7 +586,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Couply/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -598,7 +602,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Couply/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -11,7 +11,7 @@ import Foundation
 class ResponseWrapper: Serializable {
     var status : String = ""
     var message : String = ""
-    var content : AnyObject = NSObject()
+    var content : AnyObject?
     var error : NSError?
     
     override init(JSONDict: NSDictionary) {

@@ -18,7 +18,7 @@ struct Constants {
     struct Server {
         
         // URLs
-        static let LOCAL_DEBUGGING = true
+        static let LOCAL_DEBUGGING = false
         static let LocalBaseUrl = "http://localhost:3000/"
         static var BaseUrl = "http://6587801d.ngrok.com/"
         static let dynamicIPUrl = "http://minetteyu.com/files/couplyIP.txt"
@@ -48,6 +48,7 @@ struct Constants {
         static let query_timestamp = "timestamp"
         static let query_emojiId = "emojiId"
         static let query_chatType = "chatType"
+        static let query_createNew = "createNew"
     }
     
     struct Key {
@@ -72,6 +73,10 @@ struct Constants {
         static let chatCellIdentifier = "chatCell"
         static let chatHeaderNoPartnerCell = "noPartnerHeaderCell"
         static let emojiCollectionCellIdentifier = "emojiCollectionCell"
+    }
+    
+    struct UITags {
+        static let noPartnerAlertTextField = 1000
     }
 
     struct path {

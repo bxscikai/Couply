@@ -30,10 +30,12 @@ class ChatEmojiCollection : UICollectionViewCell {
     @IBOutlet weak var emojiButton: UIButton!
 }
 
-class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
+// MARK: MessagesViewController implementation
+class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var messagesTable: UITableView!
     @IBOutlet weak var emojiCollectionView: UICollectionView!
+    weak var headerView : NoPartnerHeaderCell!
     
     override func viewDidLoad() {
         // Register for notification
@@ -87,7 +89,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         let loginAction = UIAlertAction(title: "Set", style: .Default) { (_) in
             let usernameTextField = alertController.textFields![0] as! UITextField
             let username = usernameTextField.text
-            Server.getUser(username, completion: { (user, error) -> Void in
+            Server.getUser(username, createNew: true, completion: { (user, error) -> Void in
                 
                 // If we failed to get user, something is wrong, bail
                 if (user == nil) {
@@ -214,7 +216,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if (Cache.sharedInstance.user != nil || Cache.sharedInstance.user?.partnerName == nil)
         {
-            let headerView = self.messagesTable.dequeueReusableCellWithIdentifier(Constants.UIIdentifiers.chatHeaderNoPartnerCell) as! UITableViewCell
+            var headerView : NoPartnerHeaderCell = self.messagesTable.dequeueReusableCellWithIdentifier(Constants.UIIdentifiers.chatHeaderNoPartnerCell) as! NoPartnerHeaderCell
+            self.headerView = headerView
             return headerView
         }
         return nil
@@ -239,6 +242,13 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return Constants.numberOfEmojis
+    }
+
+// MARK: UITextField
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField .resignFirstResponder()
+        savePartnerPressed(NSNull)
+        return false;
     }
     
     // Emoji Pressed
@@ -305,8 +315,35 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func savePartnerPressed(sender: AnyObject) {
         
-//        Server.getUser(username, completion: { (user, error) -> Void in
-//            
-//        })
+        var partnerNameTextField : UITextField? = self.headerView.contentView.viewWithTag(Constants.UITags.noPartnerAlertTextField) as? UITextField
+        
+        var partnerName = partnerNameTextField!.text
+        
+        if (partnerNameTextField != nil &&
+              count(partnerName) > 0)
+        {
+            Server.getUser(partnerNameTextField!.text, createNew: false, completion: { (user, error) -> Void in
+                
+                // User not found, show alert
+                if (user == nil)
+                {
+                    self.showAlert("User not found", message: "User '\(partnerName)' not found", okayString: "Okay")
+                    self.reloadTable()
+                    return
+                }
+                else
+                {
+                    Server.setPartner(Cache.sharedInstance.user!.username, partnerName: partnerName, completion: { (error) -> Void in
+                        
+                        self.showAlert("Partner request sent", message: "Request to be chat partner with '\(partnerName)' sent", okayString: "Okay")
+                    })
+                }
+                self.reloadTable()
+            })
+        }
+        else
+        {
+            self.showAlert("Empty chat partner user name", message: "Partner user name cannot be empty", okayString: "Okay")
+        }
     }
 }

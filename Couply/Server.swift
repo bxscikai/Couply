@@ -12,9 +12,9 @@ import Alamofire
 class Server: NSObject {
 
     // Get user
-    class func getUser(username : String, completion : (user : User?, error: NSError?) -> Void)
+    class func getUser(username : String, createNew : Bool, completion : (user : User?, error: NSError?) -> Void)
     {
-        var queryParameters = [Constants.Server.query_username: username, Constants.Server.query_deviceToken : Cache.sharedInstance.deviceToken]
+        var queryParameters = [Constants.Server.query_username: username, Constants.Server.query_deviceToken : Cache.sharedInstance.deviceToken, Constants.Server.query_createNew :stringFromBool(createNew)]
         println("Get user url: \(Constants.Server.GetUserUrl)")
         
         Alamofire.request(Method.GET, Constants.Server.GetUserUrl, parameters:queryParameters)
@@ -27,10 +27,35 @@ class Server: NSObject {
                         return
                     }
                     
-                    // Returning response
-                    var resultUser : User = User(JSONDict: response!.content as! NSDictionary)
-                    completion(user: resultUser, error: nil)
+                    // If no User was returned, that means user doesn't exist
+                    if (response?.content == nil)
+                    {
+                        completion(user: nil, error: nil)
+                    }
+                    // This means user exists or we created a new user
+                    else
+                    {
+                        var resultUser : User = User(JSONDict: response!.content as! NSDictionary)
+                        completion(user: resultUser, error: nil)
+                    }
                     return
+        }
+    }
+    
+    // Request chat partner
+    class func setPartner(userName : String, partnerName : String, completion : (error: NSError?) -> Void)
+    {
+        var queryParameters = [Constants.Server.query_username: userName,
+                               Constants.Server.query_partnerName : partnerName]
+        
+        Alamofire.request(Method.GET, Constants.Server.RequestPartnerUrl, parameters:queryParameters)
+            .responseJSON { (_, _, JSON, error) in
+                
+                // Error handling
+                let (err, response) = Server.checkForError(JSON as! NSDictionary?, error: error as NSError?)
+                completion(error: err)
+
+                return
         }
     }
     
