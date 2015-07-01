@@ -22,13 +22,16 @@ struct Constants {
         static let LocalBaseUrl = "http://localhost:3000/"
         static var BaseUrl = "http://6587801d.ngrok.com/"
         static let dynamicIPUrl = "http://minetteyu.com/files/couplyIP.txt"
-
+        
+        static let chenkaiDeviceToken = "ecdb7f77a13a3649fb550abf4787901df86801b2612018fd445d948a3699b37c"
+        
         static let Users = "users/"
         static let Chats = "chats/"
         static let GetUserUrl = Constants.Server.BaseUrl + Constants.Server.Users + "get/"
         static let RequestPartnerUrl = Constants.Server.BaseUrl + Constants.Server.Users + "setPartner/"
         static let ApprovePartnerUrl = Constants.Server.BaseUrl + Constants.Server.Users + "approvePartner/"
         static let RemovePartnerUrl = Constants.Server.BaseUrl + Constants.Server.Users + "removePartner/"
+        static let PatchDeviceTokenUrl = Constants.Server.BaseUrl + Constants.Server.Users + "patchDeviceToken/"
         static let GetChatsUrl = Constants.Server.BaseUrl + Constants.Server.Chats + "get/"
         static let PostChatsUrl = Constants.Server.BaseUrl + Constants.Server.Chats + "set/"
         

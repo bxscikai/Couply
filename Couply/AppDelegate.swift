@@ -63,7 +63,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Push notification handling
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        Cache.sharedInstance.deviceToken = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet.init(charactersInString: "<>")).stringByReplacingOccurrencesOfString(" ", withString: "")
+        var deviceToken : String = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet.init(charactersInString: "<>")).stringByReplacingOccurrencesOfString(" ", withString: "")
+        
+        // If the user's device token doesn't match our device token patch it
+        if (Cache.sharedInstance.user != nil && Cache.sharedInstance.user!.deviceToken !=  deviceToken && count(deviceToken) > 0)
+        {
+            Server.patchDeviceToken(Cache.sharedInstance.user!.username, deviceToken: deviceToken, completion: { (error) -> Void in
+                if (error == nil)
+                {
+                    Cache.sharedInstance.deviceToken = deviceToken
+                }
+            })
+        }
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -79,8 +90,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if (userInfo.count > 0) {
             var apsDict = userInfo["aps"] as! NSDictionary
-            var emojiId : NSNumber =  (userInfo["emojiId"] as! NSString).integerValue
-            var timestamp : NSNumber = (userInfo["timestamp"] as! NSString).doubleValue
+            var emojiId : NSNumber =  userInfo["emojiId"] as! NSNumber
+            var timestamp : NSNumber = userInfo["timestamp"] as! NSNumber
             var receivedChat : Chat = Chat(emojiIdReceiving: emojiId, timestamp: timestamp)
             NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.pushnotification_key, object:receivedChat)
         }

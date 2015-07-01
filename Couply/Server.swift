@@ -42,6 +42,22 @@ class Server: NSObject {
         }
     }
     
+    // Get user
+    class func patchDeviceToken(username : String, deviceToken : String, completion : (error: NSError?) -> Void)
+    {
+        var queryParameters = [Constants.Server.query_username: username, Constants.Server.query_deviceToken : deviceToken]
+        
+        Alamofire.request(Method.GET, Constants.Server.PatchDeviceTokenUrl, parameters:queryParameters)
+            .responseJSON { (_, _, JSON, error) in
+                
+                // Error handling
+                let (err, response) = Server.checkForError(JSON as! NSDictionary?, error: error as NSError?)
+                completion(error: err)
+                
+                return
+        }
+    }
+    
     // Request chat partner
     class func setPartner(userName : String, partnerName : String, completion : (error: NSError?) -> Void)
     {

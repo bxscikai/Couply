@@ -42,7 +42,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedRemoteNotfication:", name:Constants.Notification.pushnotification_key, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioRecordingComplete:", name:Constants.Notification.audioFinishedRecording_key, object: nil)
         
-        fetchUserIfRequired()
+        fetchUser()
         fetchInitialData()
         setUpUI()
     }
@@ -72,11 +72,21 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func fetchUserIfRequired() {
+    func fetchUser() {
         
-        // We need to fetch user
+        // User does not exist, create new user or set user
         if (Cache.sharedInstance.user == nil) {
             showEnterUsernameDialog()
+        }
+        // We have a cached user, fetch entity
+        else
+        {
+            Server.getUser(Cache.sharedInstance.user!.username, createNew: false, completion: { (user, error) -> Void in
+                if (user != nil)
+                {
+                    Cache.sharedInstance.user = user
+                }
+            })
         }
     }
     
@@ -206,7 +216,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
 // MARK: UITableViewDelegate - header
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (Cache.sharedInstance.user != nil || Cache.sharedInstance.user?.partnerName == nil)
+        if (Cache.sharedInstance.user != nil && Cache.sharedInstance.user?.partnerName == nil)
         {
             return 150.0;
         }
